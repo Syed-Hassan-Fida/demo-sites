@@ -18,7 +18,7 @@ The following user decisions remove the hardest $0 blockers from discovery and c
 | Decision | Impact |
 |---|---|
 | User will collect Google Maps leads **manually** and supply CSV files | Removes Maps scraping ToS risk and Maps Platform billing/card requirements from the system scope |
-| Two personal Gmail accounts will send outreach | Supports the default **25 emails/day global** cap with room to split volume across inboxes if configured carefully |
+| Two personal Gmail accounts will send outreach | **Round-robin 15 + 15 = 30/day** (user-locked operating cap) |
 | Drafts must feel **strictly human-written**, never “AI wrote this” | Feasible with local LLM + hard drafting rules + mandatory human approval; quality depends on research quality and model choice |
 
 **Estimated coverage of the full specification at $0 with these decisions:** approximately **80–85%** of intended product value. Remaining gaps are mainly: definitive mailbox existence proof at scale, cloud-grade AI quality, and client-side $500 delivery economics (commercial offer, not outreach infrastructure).
@@ -39,10 +39,11 @@ The following user decisions remove the hardest $0 blockers from discovery and c
 
 ### 2.2 Sending and approval rules
 
-- Default global cap: **25 emails/day** across all campaigns and all sending processes.
+- Spec default was 25/day; **user-approved operating cap: 30 emails/day globally**, split as **15 per Gmail account** via round-robin.
 - **No email may be sent** without explicit human approval of that exact recipient and exact message content.
 - Bulk approval is disabled by default.
 - If recipient, subject, or body changes after approval, approval is invalidated.
+- Cap increase rationale: dual-inbox load split (15 + 15) to reduce single-mailbox burn while staying far under personal Gmail’s ~500/day hard ceiling. This still does **not** guarantee inbox placement.
 
 ### 2.3 Lead source decision (locked)
 
@@ -142,11 +143,13 @@ SQLite state machine with the states listed in the requirements is fully local a
 
 ### 4.4 Business research and website analysis — FEASIBLE WITH LIMITS ($0)
 
+**User decision:** **Playwright from day one** (installed globally on this Mac).
+
 **Feasible locally:**
 
-- Fetch official website HTML (where publicly accessible)  
+- Fetch official website HTML (where publicly accessible), including JS-rendered pages via Playwright  
 - Extract title, meta description, headings, contact/booking/order links, obvious CTAs  
-- Basic mobile/responsiveness signals (viewport meta, simple layout heuristics; optional local Playwright/Lighthouse if installed)  
+- Mobile/responsiveness signals via Playwright viewport checks + page inspection  
 - Detect missing contact paths, broken links (best-effort), thin content signals  
 - Produce evidence-backed research reports with confidence and gaps  
 
@@ -158,7 +161,7 @@ SQLite state machine with the states listed in the requirements is fully local a
 - Social profile discovery is best-effort from site links only  
 - App Store / Play presence discovery is best-effort public search; may be incomplete  
 
-**Dependencies:** Internet access for fetching public pages. No paid SEO/API required for MVP.
+**Dependencies:** Internet access; global Playwright install on the Mac. No paid SEO/API required for MVP.
 
 ### 4.5 AI understanding + personalized email generation — FEASIBLE ($0) WITH HARD HUMAN-VOICE RULES
 
@@ -169,14 +172,31 @@ Generated emails must be professional and must **strictly feel human-written**. 
 
 #### Drafting rules the system must enforce
 
+Expert drafting standard (system-owned; Streamlit approval UI presents these drafts for review):
+
 1. Write from concrete evidence only (1–2 specific observations max).  
 2. Short, natural sentences. Prefer plain business English over marketing copy.  
 3. No hype, no guarantees (“increase revenue 3x”), no fake familiarity.  
 4. No AI-tell phrases (examples to ban/detect): “I hope this email finds you well”, “leverage”, “cutting-edge”, “revolutionize”, “as an AI”, “I came across your business and was impressed”, excessive em dashes, stacked buzzwords, perfect parallel slogan-like bullets in the body.  
-5. Sound like a competent freelancer/consultant who looked at their site for two minutes — because that is the intended truth.  
+5. Sound like a competent freelancer/consultant who looked at their site carefully — because that is the intended truth.  
 6. Mention the USD $500 offer only when scope is plausibly realistic; otherwise recommend a narrower package or flag for manual rewrite.  
 7. Always attach research summary + evidence + personalization rationale to the approval UI so the human can catch anything that still sounds synthetic.  
 8. Prefer slightly imperfect natural variation across leads (different openings, different evidence order) without random nonsense.
+
+#### Deliverability-oriented composition (best practice, not a guarantee)
+
+Designed to **reduce** spam-filter and ignore risk; **cannot eliminate** it:
+
+| Do | Avoid |
+|---|---|
+| Plain-text lean body (or very light formatting) | Heavy HTML, colors, tracking pixels in MVP |
+| Specific subject tied to their business/site | ALL CAPS, “$$$”, “Free”, “Act now”, spammy urgency |
+| One clear ask (short reply / quick call) | Attachments, many links, link shorteners |
+| Real sender identity matching the Gmail From | Misleading From names |
+| Evidence-based personalization | Mass-mail merge language |
+| Honest scope; easy opt-out when required | Guarantees, fake scarcity |
+
+**Honest limit:** Gmail filtering depends on domain/account reputation, list quality, recipient engagement, authentication, and content. Professional human-sounding copy helps; it does **not** make messages unspamable.
 
 **Quality gate:** Even with good prompts, local models will occasionally sound stiff. Human approval + edit is the final quality layer and is mandatory.
 
@@ -196,17 +216,19 @@ SQLite + structured logs + dashboard reads from real state. Progress values must
 | Gmail SMTP + App Password | Free | Acceptable fallback | Requires 2FA + app password; still keep secrets out of git |
 | Paid ESPs / Instantly / Smartlead | Paid | Out of scope | — |
 
-**Provider limits (personal @gmail.com, publicly documented):** roughly **500 messages/recipients per rolling day** hard ceiling. The system’s **25/day global default** is well under that ceiling. Hitting Google’s hard limit is unlikely at 25/day; spam/reputation risk remains real for cold outreach regardless of volume.
+**Provider limits (personal @gmail.com, publicly documented):** roughly **500 messages/recipients per rolling day** hard ceiling. The system’s **30/day global operating cap (15+15)** is well under that ceiling. Hitting Google’s hard limit is unlikely at 30/day; **spam/reputation risk remains real** for cold outreach regardless of volume. No template or cadence can promise Gmail will not filter messages.
 
-**Dual-account design implications:**
+**Dual-account design implications (user-locked):**
 
 - Both accounts are first-class senders in config.  
-- Global daily cap remains **25 across both** unless the user later explicitly raises it.  
-- Recommended default split: round-robin or weighted assignment with per-account daily sub-caps (e.g. 12 + 13) so one inbox is not burned. Exact policy configurable.  
+- **Sender policy: round-robin** between `hassansfida@gmail.com` and `hassans.official1@gmail.com`.  
+- **Per-account daily sub-cap: 15** each.  
+- **Global daily cap: 30** (15 + 15).  
 - Never send the same lead from both accounts.  
-- Suppress lists and send history are global.  
+- Suppression lists and send history are global.  
 - OAuth must be completed separately for each mailbox.  
-- Live send tests require explicit user authorization.
+- Live send tests require explicit user authorization.  
+- Approval UI may still show which account will send next; manual override is optional later, not required for MVP.
 
 **Gmail API / Google Cloud caveats (must document honestly):**
 
@@ -214,11 +236,12 @@ SQLite + structured logs + dashboard reads from real state. Progress values must
 - OAuth verification is a concern if the app is used by many external users; for the account owner authorizing their own local app, testing/internal use is the intended path.  
 - Exact Cloud console steps and any billing prompts must be verified during setup and recorded as verified/unverified.
 
-### 4.9 Deliverability, compliance, 25/day cap — PARTIALLY FEASIBLE ($0)
+### 4.9 Deliverability, compliance, 30/day (15+15) cap — PARTIALLY FEASIBLE ($0)
 
 **Software can enforce:**
 
-- Global persistent daily counter  
+- Global persistent daily counter (30)  
+- Per-account sub-caps (15 each) + round-robin assignment  
 - Pacing between sends  
 - Duplicate prevention  
 - Suppression of bounced/opted-out/excluded contacts  
@@ -228,7 +251,7 @@ SQLite + structured logs + dashboard reads from real state. Progress values must
 **Software cannot guarantee:**
 
 - Inbox placement  
-- That 25/day is “safe” forever  
+- That 30/day is “safe” forever  
 - Legal compliance in every target market without human judgment  
 
 **Compliance stance:** Flag uncertain jurisdictions; require identifiable sender info and opt-out handling appropriate to the campaign; do not assume B2B data is automatically exempt from privacy/marketing rules (especially EU/Sweden-relevant campaigns). Full legal advice is outside the system; `EMAIL_COMPLIANCE.md` will capture operational safeguards (to be written later).
@@ -262,8 +285,8 @@ All local. Secrets never logged.
 | Local LLM | Ollama + 7–8B instruct | Free / local | Install + disk/RAM limits |
 | HTTP fetch | httpx / requests | Free / open | Respect robots/ToS; rate-limit |
 | HTML parse | BeautifulSoup / selectolax | Free / open | — |
-| Optional browser checks | Playwright (local) | Free / open | Heavier install; optional phase |
-| Dashboard | Streamlit or FastAPI | Free / local | Localhost only for MVP |
+| Browser research | Playwright | Free / open | **Verified this Mac:** Node Playwright CLI v1.64.0 at `~/.nvm/.../bin/playwright`. Python `playwright` package will be added as a free project dependency at build time for the pipeline. |
+| Dashboard | Streamlit | Free / local | User-approved MVP; localhost |
 | Email send | Gmail API OAuth | Free within Google account limits | Dual account setup; unverified until tested |
 | Tests | pytest + mock sender | Free | No real sends in CI/default tests |
 
@@ -321,19 +344,26 @@ Aligned with requirements §20, smallest reliable path first:
 7. Local AI drafting with human-voice constraints + validators  
 8. Approval dashboard  
 9. Gmail OAuth for both accounts + mock sender tests  
-10. Send safeguards + 25/day global cap  
+10. Send safeguards + 30/day global cap (15+15 round-robin)  
 11. Campaign dashboard / audit / exports  
 12. Tests + docs (`README`, compliance, roadmap, example env)
 
 ---
 
-## 9. Unresolved decisions (need user confirmation before or during early build)
+## 9. Decisions locked by user (2026-10-23)
 
-1. **Default send allocation across the two Gmail accounts** (round-robin vs primary/secondary vs manual per-draft account selection in the approval UI).  
-2. **Whether Playwright/Lighthouse is required in MVP** or deferred (basic HTTP analysis may be enough initially).  
-3. **Exact local model tag** after Ollama install and a short quality bake-off on sample drafts.  
-4. **Dashboard choice:** Streamlit (fastest) vs FastAPI (more control). Recommendation: Streamlit for MVP unless user prefers otherwise.  
-5. **Target markets for first live campaign** (affects compliance wording and opt-out language).  
+| Decision | Choice |
+|---|---|
+| Sender policy | **Round-robin** across both Gmail accounts |
+| Daily volume | **15 per account**, **30 global** |
+| Dashboard | **Streamlit** MVP |
+| Research tooling | **Playwright from day one** (global install on this Mac) |
+| Email copy / template UX | System-designed professional human-voice drafts + Streamlit approval/edit UI |
+
+## 9b. Still open (can resolve during early build)
+
+1. **Exact local model tag** after Ollama install and a short quality bake-off on sample drafts.  
+2. **Target markets for first live campaign** (affects compliance wording and opt-out language).  
 
 ---
 
@@ -343,8 +373,8 @@ Aligned with requirements §20, smallest reliable path first:
 |---|---|
 | Can we advance this project at $0 on this Mac? | **Yes.** |
 | Can Maps lead gen stay manual via user CSV? | **Yes — preferred and selected.** |
-| Can both listed Gmail accounts be senders? | **Yes in design; unverified until OAuth/send tests.** |
-| Can drafts feel human, not AI? | **Yes as a system goal**, via evidence-bound prompting, banned-phrase checks, and mandatory human approval/edit. Not guaranteed from the model alone. |
-| Should full build start now? | **Only after you accept this report + `ARCHITECTURE.md`.** |
+| Can both listed Gmail accounts be senders? | **Yes in design; round-robin 15+15; unverified until OAuth/send tests.** |
+| Can drafts feel human, not AI / not spammy? | **Yes as the design bar**, via evidence-bound prompting, deliverability-oriented composition, validators, and mandatory human approval/edit. **No guarantee** Gmail will never filter a message. |
+| Should full build start now? | **Architecture decisions above are locked.** Implementation may begin on your go-ahead. |
 
 **Final principle preserved:** automate research and preparation; show truthful progress; require human approval of each exact email; send only when eligibility, compliance, and provider safeguards pass — with copy that reads like a careful human wrote it.

@@ -17,8 +17,11 @@ Define a local-first architecture for an AI-assisted business research, lead qua
 - Accepts **user-supplied CSV leads** (manual Google Maps / other public research)  
 - Drafts **professional, human-sounding** emails (must not feel AI-generated)  
 - Sends only after **per-message human approval**  
-- Uses two authorized Gmail accounts as senders  
-- Caps sending at **25 emails/day globally** by default  
+- Uses two authorized Gmail accounts as senders in **round-robin**  
+- Caps sending at **30 emails/day globally** (15 per account), user-approved override of the spec’s 25 default  
+- Uses **Playwright from day one** for website research  
+- Uses **Streamlit** for the approval / campaign UI  
+- Owns professional, human-sounding draft composition (deliverability-oriented; no inbox guarantee)
 
 ---
 
@@ -137,18 +140,20 @@ Exact module names may adjust during implementation; boundaries above are the ar
 - Config includes:
   - paths for DB, incoming CSV, exports, logs  
   - Ollama host/model name  
-  - global daily send cap (default 25)  
-  - optional per-account sub-caps  
+  - global daily send cap (**30**, user-locked)  
+  - per-account daily sub-caps (**15** each)  
+  - sender policy: **round-robin**  
   - sender account IDs (emails only)  
   - pacing delay range  
   - feature flags (mock send vs live send)  
+  - Playwright settings (timeouts, mobile viewport size)  
 
 **Configured sender identities:**
 
-| ID | Email | Role |
-|---|---|---|
-| `gmail_primary` | `hassansfida@gmail.com` | Authorized sender |
-| `gmail_secondary` | `hassans.official1@gmail.com` | Authorized sender |
+| ID | Email | Role | Daily sub-cap |
+|---|---|---|---:|
+| `gmail_a` | `hassansfida@gmail.com` | Round-robin sender | 15 |
+| `gmail_b` | `hassans.official1@gmail.com` | Round-robin sender | 15 |
 
 Live mode remains off until the user explicitly enables it and completes OAuth for each account.
 
@@ -207,14 +212,17 @@ Labels: eligible-looking / invalid / risky / unknown / duplicate / incomplete.
 
 ### 4.6 Research and website analysis
 
+**Browser engine:** Playwright (day one; globally installed on this Mac).
+
 For each eligible lead with a website:
 
-1. Fetch publicly accessible pages (homepage first; limited follow to contact/about/booking if linked).  
-2. Extract observable signals (services, CTAs, mobile hints, contact paths, friction points).  
-3. Ask local LLM only to **organize and score evidence**, not invent missing facts.  
-4. Write research report with required sections from the spec (what they do, process, strengths, problems, opportunities, app justification, evidence, confidence, gaps, sources).  
+1. Open the site with Playwright (desktop + mobile viewport passes where useful).  
+2. Capture homepage; limited follow to contact/about/booking/menu links when present.  
+3. Extract observable signals (services, CTAs, mobile layout issues, contact paths, friction points, broken obvious flows).  
+4. Ask local LLM only to **organize and score evidence**, not invent missing facts.  
+5. Write research report with required sections from the spec (what they do, process, strengths, problems, opportunities, app justification, evidence, confidence, gaps, sources).  
 
-If no website / fetch fails: record attempts, confidence, and mark for cautious wording or skip drafting until manual review per campaign rules.
+If no website / fetch fails: record attempts, confidence, and mark for cautious wording or skip drafting until manual review per campaign rules. Rate-limit and timeout conservatively; never treat one failed load as proof of no website.
 
 ### 4.7 Lead scoring
 
@@ -261,9 +269,9 @@ research_report + lead_context
      DRAFT_READY → approval queue
 ```
 
-#### Human-voice policy (non-negotiable)
+#### Human-voice + deliverability policy (non-negotiable)
 
-**Goal:** The client must feel a real person researched them and wrote a short professional note — not that an AI sequence contacted them.
+**Goal:** The client must feel a real person researched them and wrote a short professional note — not that an AI sequence contacted them. Copy and structure are system-designed for professionalism and lower ignore/spam risk; **inbox placement is never guaranteed.**
 
 **Architectural enforcements:**
 
@@ -273,7 +281,16 @@ research_report + lead_context
 4. **Style targets:** short paragraphs, natural contractions where appropriate, specific but calm language, low-pressure CTA, no fake prior relationship.  
 5. **Variation:** prompt asks for natural variation; validator rejects near-duplicate bodies across recent drafts when similarity is extreme (best-effort).  
 6. **Offer honesty:** include USD $500 website/app language only when scoring/qualification says the scoped package is plausible; otherwise softer “possible fit / scoped package” wording or flag for human rewrite.  
-7. **Human is final tone filter:** approval UI shows draft prominently with “Edit Draft” as a first-class action. Stiff-but-valid drafts are expected sometimes; editing is normal, not failure.  
+7. **Human is final tone filter:** Streamlit approval UI shows draft prominently with “Edit Draft” as a first-class action. Stiff-but-valid drafts are expected sometimes; editing is normal, not failure.  
+
+**Deliverability-oriented composition (MVP):**
+
+- Prefer plain-text or minimal formatting (no heavy HTML templates, no tracking pixels in MVP).  
+- Subject: specific, calm, business-relevant; reject ALL CAPS / spammy urgency / “free$$$” patterns.  
+- Body: few or no links (official site reference only when useful); no attachments; no link shorteners.  
+- From name/address must match the selected authenticated Gmail account.  
+- One clear, low-pressure ask.  
+- Pace sends; respect 15/account and 30 global caps.  
 
 **Outputs per lead:** research summary, personalization rationale, subject, body, eligibility/compliance flags, voice-validation result.
 
@@ -289,7 +306,7 @@ Dashboard shows at minimum:
 - Subject + full body  
 - Why this email is relevant  
 - Compliance / sending eligibility  
-- Which Gmail account would send (default or user-selected)
+- Which Gmail account is next in round-robin (and remaining daily quota for that account / global)
 
 Actions:
 
@@ -318,13 +335,13 @@ Actions:
 Final safeguards pass?
         │
         ▼
-Select sender account
-  - manual override from approval UI, else
-  - policy: round-robin OR primary-first with sub-caps
+Select sender account (round-robin)
+  - skip an account if its 15/day sub-cap is exhausted
+  - if both exhausted → lock sending for the day
         │
         ▼
-Ensure account not over per-account sub-cap
-Ensure global counter < 25 (default)
+Ensure account not over per-account sub-cap (15)
+Ensure global counter < 30
 Ensure lead not suppressed / not already sent
 Ensure approval hash matches current draft
         │
@@ -336,7 +353,9 @@ Send via Gmail API
         └── uncertain → SEND_STATUS_UNKNOWN (no auto-resend)
 ```
 
-**Global rule:** 25/day across **both** accounts and all campaigns.
+**Global rule:** **30/day** across both accounts and all campaigns (**15 + 15**).
+
+**Round-robin rule:** alternate `gmail_a` ↔ `gmail_b` on successful assignment; if one account is capped or disconnected, use the other until it is also capped or restored.
 
 **Anti-duplication:** same email address cannot be contacted again from either account once sent/suppressed.
 
@@ -401,10 +420,13 @@ Rules:
 | DB | SQLite | Local, zero cost, sufficient scale |
 | AI runtime | Ollama | Free local inference |
 | AI model | ~7–8B instruct (final tag after bake-off) | Fits 16 GB Intel Mac |
-| Dashboard MVP | Streamlit | Fast localhost UI |
-| Email | Gmail API OAuth (both accounts) | Free within Google limits; dual-sender support |
+| Browser research | Playwright | User-locked day-one; global Mac install |
+| Dashboard MVP | Streamlit | User-approved; fast localhost UI |
+| Email | Gmail API OAuth (both accounts) | Free within Google limits; round-robin 15+15 |
+| Daily caps | 15/account, 30 global | User-locked |
 | Test sender | Mock | Required for safe automated tests |
 | Lead acquisition | Manual CSV | User-owned Maps collection |
+| Draft UX | System-designed human-voice drafts | Professional, low-spam-pattern; human approves |
 
 ---
 
@@ -429,7 +451,7 @@ Rules:
 | Approval missing / hash mismatch | Block send |
 | Provider disconnect / rate limit | Pause sending; preserve drafts/approvals |
 | Uncertain send outcome | `SEND_STATUS_UNKNOWN`; no automatic resend |
-| Daily cap reached | Queue remains; send locked until next day counter reset |
+| Daily cap reached (per-account 15 or global 30) | Queue remains; send locked until next day counter reset |
 
 ---
 
@@ -459,14 +481,20 @@ Definition of done remains the acceptance list in `PROJECT_REQUIREMENTS.md` §22
 
 ---
 
-## 12. Open decisions for the user
+## 12. Decisions locked by user (2026-10-23)
 
-Confirm or override before implementation starts:
+| Topic | Decision |
+|---|---|
+| Sender policy | Round-robin |
+| Volume | 15 per Gmail account / 30 global per day |
+| Dashboard | Streamlit |
+| Research | Playwright from day one |
+| Email copy / UI | System designs professional human-voice drafts; Streamlit approval/edit |
 
-1. **Sender selection policy:** round-robin between the two Gmail accounts, primary-first, or always choose manually in the approval UI?  
-2. **Dashboard:** accept Streamlit MVP?  
-3. **MVP research depth:** HTTP + HTML analysis only first, or install Playwright immediately?  
-4. **First niche/location** for fictional end-to-end dry run after build begins?  
+## 12b. Still open
+
+1. Exact Ollama model tag after install + bake-off.  
+2. First niche/location for fictional end-to-end dry run.  
 
 ---
 
@@ -475,7 +503,9 @@ Confirm or override before implementation starts:
 This architecture satisfies the requirements’ local-first, $0, human-approval, truthful-progress, and evidence-based personalization constraints, with these locked product inputs:
 
 - Leads arrive as **user-supplied CSVs** (manual Maps collection).  
-- Senders are **`hassansfida@gmail.com`** and **`hassans.official1@gmail.com`** (integration unverified until tested).  
-- Draft quality bar is **human-written feel**, enforced by evidence binding, validators, and mandatory human approval/edit.  
+- Senders are **`hassansfida@gmail.com`** and **`hassans.official1@gmail.com`** in **round-robin at 15+15 (30/day)** (integration unverified until tested).  
+- Research uses **Playwright from day one**.  
+- UI is **Streamlit**.  
+- Draft quality bar is **professional human-written feel** with deliverability-oriented composition, enforced by evidence binding, validators, and mandatory human approval/edit. **No claim that Gmail will never spam-folder a message.**  
 
-**Next step after your approval:** implement Phase 1 (project skeleton, config/secrets pattern, CSV pipeline, SQLite state, fictional samples) — still with mock send only.
+**Next step on your go-ahead:** implement Phase 1 (project skeleton, config/secrets pattern, CSV pipeline, SQLite state, fictional samples) — still with mock send only.
