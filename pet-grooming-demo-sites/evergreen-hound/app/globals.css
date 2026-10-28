@@ -359,9 +359,20 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 5.5rem 0 3rem;
-  max-width: min(34rem, 100%);
-  width: 100%;
+  /* Keep side inset via width (do not use width:100% — it cancels .wrap padding) */
+  width: min(1140px, calc(100% - 2rem));
+  max-width: min(34rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: 4.25rem 0 3rem;
+  box-sizing: border-box;
+}
+
+/* Mobile-only: restore side inset + clear sticky book bar; desktop unchanged */
+@media (max-width: 859px) {
+  .hero-dock {
+    padding-top: 3.25rem;
+    padding-bottom: calc(3.5rem + 5.25rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .hero-kicker {
