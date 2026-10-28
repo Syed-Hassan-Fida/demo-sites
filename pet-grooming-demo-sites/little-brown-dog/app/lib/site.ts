@@ -1,0 +1,181 @@
+export const site = {
+  "slug": "little-brown-dog",
+  "name": "Little Brown Dog",
+  "liveUrl": "https://lbdog.com/",
+  "canonical": "https://little-brown-dog-demo.vercel.app",
+  "tagline": "Full-service grooming studio led by Nationally Certified Master Groomer Brooke El-Merrahi, NCMG.",
+  "kicker": "NCMG studio · Lower Highland · Near downtown Denver",
+  "heroLine": "Portrait-quality finishes from a master groomer in Denver’s Lower Highland Art District.",
+  "heroAlt": "Studio portrait of a freshly groomed dog",
+  "seoTitleSuffix": "Master groomer studio — Denver CO",
+  "seoDescription": "Little Brown Dog pet grooming studio in Denver. Led by Brooke El-Merrahi, NCMG, CCE. 3235 Navajo Street. Call 720-588-8523.",
+  "address": "3235 Navajo Street, Denver, CO 80211",
+  "street": "3235 Navajo Street",
+  "city": "Denver",
+  "region": "CO",
+  "postal": "80211",
+  "phone": "(720) 588-8523",
+  "phoneTel": "+17205888523",
+  "email": "info@lbdog.com",
+  "instagram": "",
+  "primaryCta": {
+    "label": "Call the studio",
+    "href": "tel:+17205888523"
+  },
+  "fonts": {
+    "displayImport": "Fraunces",
+    "bodyImport": "Karla",
+    "displayOpts": ""
+  },
+  "theme": {
+    "bg": "#f3ebe3",
+    "paper": "#fffaf5",
+    "ink": "#2a2118",
+    "brand": "#5c3d2e",
+    "accent": "#a67c52",
+    "muted": "#6e5b4c",
+    "heroObjectPosition": "50% center"
+  },
+  "images": {
+    "hero": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=2000",
+    "g1": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g2": "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g3": "https://images.pexels.com/photos/6816863/pexels-photo-6816863.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g4": "https://images.pexels.com/photos/1629781/pexels-photo-1629781.jpeg?auto=compress&cs=tinysrgb&w=1000"
+  },
+  "trust": [
+    {
+      "title": "NCMG",
+      "sub": "Master groomer led"
+    },
+    {
+      "title": "Highland",
+      "sub": "Near downtown Denver"
+    },
+    {
+      "title": "Full service",
+      "sub": "Studio grooming"
+    },
+    {
+      "title": "Mon–Fri",
+      "sub": "7am–6pm*"
+    }
+  ],
+  "homeServicesTitle": "Studio craft, gallery finishes",
+  "homeServicesLead": "Breed-aware grooms with the polish of a nationally certified master groomer.",
+  "services": [
+    {
+      "title": "Full studio groom",
+      "price": "Quote by coat",
+      "blurb": "Complete haircut and spa finish in the Navajo Street studio.",
+      "includes": [
+        "Custom cut",
+        "Bath & dry",
+        "Detail finish"
+      ]
+    },
+    {
+      "title": "Bath & brush",
+      "price": "Quote by coat",
+      "blurb": "Maintenance bath between full appointments.",
+      "includes": [
+        "Bath",
+        "Blow dry",
+        "Brush out"
+      ]
+    },
+    {
+      "title": "Portrait-ready finish",
+      "price": "Included in craft",
+      "blurb": "Gallery-quality presentation — swap in your named client portraits at launch.",
+      "includes": [
+        "Hand finish",
+        "Coat presentation"
+      ]
+    }
+  ],
+  "pricingLead": "Premium studio pricing by breed, coat, and time — call or email for an estimate.",
+  "pricing": [
+    {
+      "title": "Full groom",
+      "price": "Studio quote",
+      "note": "Signature",
+      "items": [
+        "Master-led cut",
+        "Spa finish"
+      ]
+    },
+    {
+      "title": "Bath visit",
+      "price": "Studio quote",
+      "note": "Between cuts",
+      "items": [
+        "Bath",
+        "Dry",
+        "Brush"
+      ]
+    },
+    {
+      "title": "Detail add-ons",
+      "price": "As needed",
+      "note": "Coat dependent",
+      "items": [
+        "Nails",
+        "Ears",
+        "Specialty care"
+      ]
+    }
+  ],
+  "addons": [],
+  "reviews": [
+    {
+      "quote": "Master-level attention to coat and shape — worth the Highland trip.",
+      "who": "Denver client"
+    },
+    {
+      "quote": "Calm studio, beautiful finish, clear communication.",
+      "who": "Highland neighbor"
+    },
+    {
+      "quote": "You can tell Brooke’s credentials show up in the scissors work.",
+      "who": "Repeat client"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who leads the studio?",
+      "a": "Nationally Certified Master Groomer Brooke El-Merrahi, NCMG, CCE."
+    },
+    {
+      "q": "Hours?",
+      "a": "Monday–Friday 7:00am–6:00pm*. Saturday & Sunday closed. Actual closing time varies based on groomer schedule."
+    },
+    {
+      "q": "How do I book?",
+      "a": "Call 720-588-8523 or email info@lbdog.com."
+    },
+    {
+      "q": "Where are you?",
+      "a": "3235 Navajo Street, Denver, CO 80211 — Lower Highland Art District near downtown."
+    }
+  ],
+  "bookLead": "Call 720-588-8523 or email info@lbdog.com with breed, coat notes, and preferred days.",
+  "locations": [],
+  "ctaBandTitle": "Book the studio",
+  "ctaBandLead": "A booking path as polished as the grooms.",
+  "pages": [
+    "",
+    "services",
+    "pricing",
+    "gallery",
+    "faq",
+    "book",
+    "contact",
+    "privacy",
+    "terms",
+    "accessibility"
+  ],
+  "handoffNotes": "- Replace stock gallery with named client portraits from live site (Max, Owen, CJ, etc.).\n- Reviews are placeholders marked for swap — live site was gallery-first."
+};
+
+export type SiteConfig = typeof site;

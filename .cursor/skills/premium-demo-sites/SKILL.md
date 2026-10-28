@@ -1,89 +1,98 @@
 ---
 name: premium-demo-sites
 description: >-
-  Build and redesign cold-outreach demo websites with a premium 2026 look,
-  mobile-first heroes, and business-nature-specific UX. Use when creating or
-  redesigning demo sites under pet-grooming-demo-sites (or similar), Next.js
-  landing pages for outreach prospects, Christmas/seasonal subpages, or when
-  the user asks for a redesign demo, premium site, or client pitch site.
+  Build and redesign cold-outreach demo websites with Next.js App Router,
+  premium 2026 UI/UX, SEO, accessibility, and business-nature-specific design.
+  Use when creating or redesigning demo sites under pet-grooming-demo-sites,
+  auditing live client sites, writing page inventories/sitemaps, or when the
+  user asks for a redesign demo, pitch site, gallery/FAQ/pricing pages, or
+  Next.js client handoff.
 ---
 
-# Premium outreach demo sites
+# Premium outreach demo sites (Next.js)
 
-Every new redesign demo must feel like a **2026 boutique brand site**, not a
-template, Wix clone, or generic AI landing page. Match the **business nature**
-(Fear Free groomer ≠ tattoo shop ≠ cafe ≠ plumber).
+Every redesign demo must feel like a **2026 boutique brand site**, not a
+template, Wix clone, or generic AI landing page. Match the **business nature**.
+
+**Out of scope unless the user reopens them:** already-professional sites called
+out in the request (e.g. Evergreen Hound, Painted Paws). Do not modify those.
+
+## Stack (required)
+
+- **Next.js only** (App Router + TypeScript). No other frontend framework/CMS
+  unless the user explicitly approves.
+- Use Metadata API, `next/image`, `sitemap.ts`, `robots.ts`, server/client
+  components appropriately.
+- One deployable app **per client folder** under `pet-grooming-demo-sites/`.
+- Seasonal campaigns are **routes** inside the same app, never a second project.
+- Stock: prefer **Pexels** via `next/image` (allow `images.pexels.com` in
+  `next.config`). No broken or irrelevant imagery.
+
+## Required workflow per client
+
+1. **Audit** the live site: pages, nav, services, legal, blog, gallery, forms, CTAs.
+2. **Write** page inventory + proposed sitemap **before** coding.
+3. **Do not drop** existing pages without a documented reason.
+4. Research business nature, audience, local market, positioning → tailor design.
+5. Use real client content; mark unavoidable placeholders clearly (never lorem).
+
+## Required pages / sections
+
+Every redesign must include at least:
+
+- Home (conversion-focused)
+- Portfolio / Gallery
+- FAQ
+- Pricing or service packages / pricing
+- Contact (+ booking path matching how they actually book)
+- Privacy, Terms, Accessibility (trust/legal)
+- High-value niche extras as needed: services, testimonials, team, service areas,
+  trust signals, local SEO, before/after
 
 ## Hard composition rules
 
-1. **One composition** in the first viewport — not a dashboard.
-2. **Brand first** — business name is hero-level; headline must not overpower it.
-3. **Brand test** — if removing the nav makes the first screen anonymous, branding is too weak.
-4. **Typography** — expressive fonts; never Inter / Roboto / Arial / system-only stacks.
-5. **Atmosphere** — gradients, imagery, or subtle texture; never flat single-color pages.
-6. **Full-bleed hero** — edge-to-edge image/video plane. No inset hero cards, side panels, rounded media cards, tiled collages, or floating image blocks unless the client’s existing system requires it.
-7. **Hero budget** — first viewport: brand + one headline + one short support line + one CTA group + one dominant image. No stats, schedules, address blocks, promos, or secondary marketing in the hero.
-8. **No hero overlays** — no badges, chips, stickers, or callout boxes on hero media.
-9. **Cards** — default none. Never in the hero. Use cards only when they wrap a real interaction.
-10. **One job per section** — one purpose, one headline, usually one short lead.
-11. **Real visual anchor** — show the craft, place, or product; decorative gradients alone do not count.
-12. **Motion** — ship 2–3 intentional motions (reveal, subtle ken burns, CTA pulse). Respect `prefers-reduced-motion`.
-13. **Avoid AI-default looks** — purple-on-white / indigo gradients; warm cream + terracotta serif; broadsheet hairline newspaper layouts; dark-mode-by-default; glow stacks; rounded-full pill clusters; emoji decoration.
-
-## Business-nature first
-
-Before pixels, decide:
-
-| Ask | Output |
-|---|---|
-| What do they sell / care about? | Palette, imagery, tone |
-| What makes them different? | Hero line + trust strip |
-| How do customers book/buy? | Primary CTA (SMS, call, form, Shopify) |
-| Seasonal money? | Optional `/christmas` or campaign route **inside the same app** |
-
-Examples:
-
-- **Fear Free pet groomer** — calm forest palette, soft motion, appointment-by-text, spa add-ons + photography path.
-- **Restaurant** — appetite photography, reservation CTA, menu hierarchy, atmosphere over corporate trust badges.
-- **Trade / home service** — clarity, proof, service areas, fast call/text; less lifestyle fluff.
-
-Do **not** reuse Evergreen Hound colors/fonts/section order blindly for a different trade.
+1. One composition in the first viewport — not a dashboard.
+2. Brand first — business name is hero-level.
+3. Brand test — removing nav must not make the first screen anonymous.
+4. Expressive typography — never Inter / Roboto / Arial / system-only.
+5. Atmosphere — gradients, imagery, or texture; never flat single-color pages.
+6. Full-bleed hero — no inset hero cards / side panels / floating media blocks.
+7. Hero budget — brand + one headline + one support line + CTA group + image.
+8. No hero overlays (badges, chips, stickers).
+9. Cards default none; never in hero; only when wrapping real interaction.
+10. One job per section.
+11. Real visual anchor (craft/place/product).
+12. 2–3 intentional motions; respect `prefers-reduced-motion`.
+13. Avoid AI-default looks (purple/indigo gradients; cream+terracotta cliché;
+    broadsheet newspaper; dark-mode-by-default; glow stacks; pill clusters; emoji).
 
 ## Mobile hero (non-negotiable)
 
-Desktop can stay a left text dock over full-bleed media. On mobile:
+- Side inset via `width: min(…, calc(100% - 2rem))` + `margin-inline: auto`.
+- **Never** `.hero-dock { width: 100% }` (cancels wrap padding).
+- Bottom padding clears sticky book bar + `safe-area-inset-bottom`.
+- Verify ~390px width; keep copy off faces.
 
-- Hero copy uses the same horizontal inset as page content (`width: min(…, calc(100% - 2rem))` + `margin-inline: auto`).
-- **Never** set `.hero-dock { width: 100% }` — it cancels `.wrap` side padding and flushes CTAs to the screen edge.
-- Bottom padding must clear any sticky mobile book bar:  
-  `padding-bottom: calc(3.5rem + bar-height + env(safe-area-inset-bottom))`.
-- Keep copy off faces: gradient dock + `object-position` tuned per image; verify on a real phone width (~390px).
-- Primary CTA must be thumb-reachable; prefer sticky bottom book bar under ~860px.
+## SEO / a11y / forms / email
 
-Fix mobile padding **without** restyling desktop when the user says desktop is fine.
+- Unique title + meta description, canonical, OG/Twitter, LocalBusiness JSON-LD,
+  sitemap, robots, redirects notes for old URLs where known.
+- WCAG 2.2 AA where feasible: keyboard, focus, contrast, alt, semantics, labels.
+- Forms: validation, success/error, spam honeypot, privacy consent, accessible labels.
+- Email templates (contact/booking): brand-aligned HTML + plain-text fallback;
+  responsive; professional tone. Prefer `.md` pitch + optional `.html` only if asked.
 
-## Stack & structure
+## QA before done
 
-- Next.js App Router, one deployable app per client folder.
-- Seasonal pages are **routes** (`/christmas`), never a second project.
-- Free stock: prefer **Pexels** via `next/image` (Unsplash often breaks the optimizer). Allow only needed hosts in `next.config`.
-- Demo banner at top: redesign concept, not the live site; scoped price if pitching.
-- Required information follows the **client’s** real services — do not invent sections that fight their business.
+- [ ] Inventory + sitemap documented
+- [ ] Brand test + mobile hero padding
+- [ ] All required pages live; no dropped pages without reason
+- [ ] Images load; no horizontal scroll / CLS / overlap bugs
+- [ ] Forms + keyboard + focus states
+- [ ] `next build` passes; lint/type-check clean
+- [ ] Demo banner (concept, not live site) + handoff notes + preview URL
 
-## Section quality bar
+## Scaffold
 
-- Strong CTA hierarchy (one primary, one secondary).
-- Trust proof near the hero (certifications, years, neighborhood) — **below** the fold of the hero composition.
-- Services scannable on phone; unique named offers get visual treatment.
-- Reviews feel modern (avatar + quote + meta), not star widgets from 2014.
-- Hours / map when location matters; appointment-only businesses say so clearly.
-- Team portraits: real when available; honest placeholders labeled for swap.
-
-## Checklist before calling a demo done
-
-- [ ] First viewport passes brand test (mobile + desktop)
-- [ ] Mobile hero has correct side + bottom padding; sticky CTA does not cover copy
-- [ ] All images load (no broken `/_next/image`, no blocked live CDN)
-- [ ] Motion works; reduced-motion still readable
-- [ ] Palette/type/imagery match **this** business, not the last demo
-- [ ] Desktop left alone if user only asked for a mobile fix
+Prefer `pet-grooming-demo-sites/_kit/` patterns and per-client `site.ts` config.
+Do **not** clone Evergreen Hound palette/fonts/section order for unrelated brands.

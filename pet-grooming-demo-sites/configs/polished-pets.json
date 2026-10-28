@@ -1,0 +1,82 @@
+{
+  "slug": "polished-pets",
+  "name": "Polished Pets",
+  "liveUrl": "https://www.polishedpetsgrooming.com/",
+  "canonical": "https://polished-pets-demo.vercel.app",
+  "tagline": "Cage-free mobile dog grooming at your door — Denver & Boulder County.",
+  "kicker": "Mobile · Cage-free · Soft-temperament focus",
+  "heroLine": "Stress-free full grooms and bath packages at home or the office — clear size-based starting prices.",
+  "heroAlt": "Dog enjoying calm grooming care",
+  "seoTitleSuffix": "Mobile dog grooming — Denver & Boulder",
+  "seoDescription": "Polished Pets Mobile Dog Grooming. Cage-free at-your-door service in Denver and Boulder County. Call/text 720-295-7802.",
+  "address": "1905 Sherman St Suite 200 #2354, Denver, CO 80203 (mobile service)",
+  "street": "1905 Sherman St Suite 200 #2354",
+  "city": "Denver",
+  "region": "CO",
+  "postal": "80203",
+  "phone": "(720) 295-7802",
+  "phoneTel": "+17202957802",
+  "email": "alexis@polishedpetsgrooming.com",
+  "instagram": "@polishedpetsmobilegrooming",
+  "areaServed": "Denver, Boulder County, and surrounding communities",
+  "primaryCta": { "label": "Book mobile groom", "href": "/book" },
+  "fonts": { "displayImport": "Outfit", "bodyImport": "Figtree", "displayOpts": "" },
+  "theme": {
+    "bg": "#f2f7f8",
+    "paper": "#ffffff",
+    "ink": "#152026",
+    "brand": "#1f5c63",
+    "accent": "#3aa6a8",
+    "muted": "#5a7075",
+    "heroObjectPosition": "55% center"
+  },
+  "images": {
+    "hero": "https://images.pexels.com/photos/19145888/pexels-photo-19145888.jpeg?auto=compress&cs=tinysrgb&w=2000",
+    "g1": "https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g2": "https://images.pexels.com/photos/6131005/pexels-photo-6131005.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g3": "https://images.pexels.com/photos/8434791/pexels-photo-8434791.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "g4": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1000"
+  },
+  "trust": [
+    { "title": "Cage-free", "sub": "At your door" },
+    { "title": "Size pricing", "sub": "Clear starting rates" },
+    { "title": "Home or office", "sub": "Flexible meet points" },
+    { "title": "Soft temperaments", "sub": "Gentle pacing" }
+  ],
+  "homeServicesTitle": "Published packages, mobile convenience",
+  "homeServicesLead": "Full groom and bath & brush tiers by weight — plus add-ons for deshed, dematting, deskunk, and more.",
+  "services": [
+    { "title": "Full Groom", "price": "From $120", "blurb": "Bath, blow dry, brush out, haircut, nails, ears, eye cleaning, paw care, sanitary trim.", "includes": ["Haircut", "Bath & dry", "Nails, ears, paws"] },
+    { "title": "Bath & Brush", "price": "By size", "blurb": "Gentle bath and brush-out between full grooms.", "includes": ["Bath", "Blow dry", "Brush out"] },
+    { "title": "Sensitive / special needs", "price": "Matched groomer", "blurb": "Groomers experienced with injuries, anxiety, or special needs — pacing adjusted for safety.", "includes": ["Matched skill", "Calm handling"] }
+  ],
+  "pricingLead": "Starting rates by size. Final needs (coat, mats, behavior) may adjust the ticket.",
+  "pricing": [
+    { "title": "Full Groom · Small (0–22 lbs)", "price": "From $120", "note": "Most common starter", "items": ["Cut + spa package"] },
+    { "title": "Full Groom · Medium (23–57 lbs)", "price": "From $140", "note": "", "items": ["Cut + spa package"] },
+    { "title": "Full Groom · Large (58–99 lbs)", "price": "From $160", "note": "", "items": ["Cut + spa package"] }
+  ],
+  "addons": [
+    { "title": "De-Shedding", "price": "From $35 small", "blurb": "Loose undercoat removal for cleaner homes and healthier coats." },
+    { "title": "De-Matting / coat restoration", "price": "From $25 small", "blurb": "Gentle tangle removal and soft finish." },
+    { "title": "De-Skunking or anal gland expression", "price": "Add-on", "blurb": "Specialty odor care or gentle external expression when appropriate." },
+    { "title": "Fresh breath teeth brushing", "price": "Add-on", "blurb": "Plaque care and fresher breath." }
+  ],
+  "reviews": [
+    { "quote": "Doorstep grooming removed so much stress — our anxious dog actually cooperates now.", "who": "Denver client" },
+    { "quote": "Clear pricing by size and easy texting with Alexis’s team.", "who": "Boulder County" },
+    { "quote": "Office meetup while I worked was a lifesaver.", "who": "Busy pet parent" }
+  ],
+  "faqs": [
+    { "q": "Where do you serve?", "a": "Boulder County, Denver, and surrounding communities — home or office meetups." },
+    { "q": "How do I book?", "a": "Call/text 720-295-7802, email alexis@polishedpetsgrooming.com, or use the request form. Instagram @polishedpetsmobilegrooming." },
+    { "q": "Is it cage-free?", "a": "Yes — mobile, cage-free grooming at your door to reduce travel and salon stress." },
+    { "q": "Pet sitting?", "a": "Sister company Pure In Home Pet Sitting is available for sitting needs — ask when you book." }
+  ],
+  "bookLead": "Share your ZIP, dog’s weight/breed, and preferred days. Call/text 720-295-7802 for the fastest match.",
+  "locations": [],
+  "ctaBandTitle": "Book the mobile spa",
+  "ctaBandLead": "Size-based pricing already on the site — confirmation and reminders are the pitch.",
+  "pages": ["", "services", "pricing", "gallery", "faq", "book", "contact", "privacy", "terms", "accessibility"],
+  "handoffNotes": "- Bath & Brush exact dollar amounts not fully listed on audit — keep “by size” until client confirms.\n- Reviews are illustrative placeholders."
+}
