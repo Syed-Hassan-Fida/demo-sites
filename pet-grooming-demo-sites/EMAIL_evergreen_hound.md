@@ -2,7 +2,9 @@
 
 **To:** barkingevergreen@gmail.com  
 **Also useful:** SMS 512-766-1712 · Instagram @evergreenhound  
-**Replace** `DEMO_URL` after one Vercel deploy (Root Directory = `evergreen-hound`).
+**Demo URLs (live):**
+- Main: https://demo-sites-lovat-kappa.vercel.app/
+- Christmas: https://demo-sites-lovat-kappa.vercel.app/christmas
 
 ---
 
@@ -14,30 +16,37 @@
 
 ---
 
-## Body (copy/paste)
+## Body (plain text / copy-paste)
 
 Hi Noel,
 
-I’m Hassan. I looked at evergreenhound.com — the Fear Free / force-free story and the Austin-named add-ons (Willie, McConaughey, Ladybird) are genuinely strong.
+I’m Hassan — former Senior Developer at cuddleclones.com, where I built the full design, automations, and Order Management System, and supported their Christmas marketing campaign.
 
-What feels harder than it should on mobile: packages, photography, team, and booking all compete on one long page. Gift-buyers heading into Christmas don’t get a clear “holiday photo / gift card” path.
+I looked at evergreenhound.com — the Fear Free / force-free story and the Austin-named add-ons (Willie, McConaughey, Ladybird) are genuinely strong.
 
-I built a **redesign concept** (not live as your site) so you can see the difference:
+What feels harder than it should on mobile: packages, photography, team, and booking all compete on one long page. Gift buyers heading into Christmas don’t get a clear “holiday photo / gift card” path.
 
-- Main salon site: DEMO_URL  
-- Christmas gifts page (same site): DEMO_URL/christmas  
+I built a redesign concept (not live as your site) so you can see the difference:
 
-**Offer (scoped):**  
-$150–$300 for the redesign including the Christmas page.  
-**You pay only if you love the demo and want me to finish it.**
+- Main salon site: https://demo-sites-lovat-kappa.vercel.app/
+- Christmas gifts page (same site): https://demo-sites-lovat-kappa.vercel.app/christmas
 
-If you want more later, we can jump on a short call about:
+Offer (scoped): $150–$300 for the redesign, including the Christmas page.  
+You pay only if you love the demo and want me to finish it.
+
+If you love this demo site, under that same $150–$300 I’ll also build — at no extra cost — within 3–4 days with deployment:
+- Client profiles with package selection, pricing, and profile management
+- Loyalty program for returning customers
+- Portfolio page
+- FAQ page
+
+If you want even more later, we can jump on a short call about:
 - a private / centralized client CRM (reminders, history, less inbox chaos)
 - a custom Shopify store with a private theme (gift cards, retail, photo packages)
 
-No pressure on those — the website is the only ask right now.
+No pressure on those — the website and the extras above are the only ask right now.
 
-If useful, reply with what you’d change and I’ll adjust copy/photos around your real gallery.
+If useful, reply with what you’d change and I’ll adjust copy and photos around your real gallery.
 
 Hassan  
 Websites & booking-focused demos for independent groomers  
@@ -47,7 +56,7 @@ hassansfida@gmail.com
 
 ## Short SMS version (optional)
 
-Hi Noel — Hassan here. Redesign demo for Evergreen Hound + Christmas gifts page at DEMO_URL/christmas. Pay $150–300 only if you love it. Main: DEMO_URL
+Hi Noel — Hassan here (ex Senior Dev, cuddleclones.com). Redesign demo for Evergreen Hound + Christmas page: https://demo-sites-lovat-kappa.vercel.app/christmas — pay $150–300 only if you love it; same price covers client profiles, loyalty, portfolio & FAQ in 3–4 days with deploy. Main: https://demo-sites-lovat-kappa.vercel.app/
 
 ---
 
@@ -55,5 +64,6 @@ Hi Noel — Hassan here. Redesign demo for Evergreen Hound + Christmas gifts pag
 
 1. Confirm they like mobile Book/Text clarity  
 2. Ask which Christmas gift they want live first (studio / outdoor / gift card)  
-3. Only then mention CRM or Shopify as optional phase 2 quotes  
-4. Do **not** promise multi-location CRM or full Shopify inside $150–$300  
+3. Confirm which included extras they want first (profiles / loyalty / portfolio / FAQ) — still inside $150–$300, 3–4 days + deploy  
+4. Only then mention full CRM or Shopify as optional phase 2 quotes  
+5. Do **not** promise multi-location CRM or full Shopify inside $150–$300  
