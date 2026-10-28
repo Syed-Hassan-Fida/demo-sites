@@ -3,30 +3,23 @@ import { site } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Demo redesign terms — not legal advice.",
+  description: `Terms of use for the ${site.namePlain} redesign demo.`,
   alternates: { canonical: "/terms" },
 };
 
-export default function LegalPage() {
+export default function TermsPage() {
   return (
-    <section className="wrap" style={{ paddingTop: "3rem", maxWidth: "42rem" }}>
+    <section className="wrap prose" style={{ paddingTop: "3rem" }}>
       <p className="section-kicker">Legal</p>
       <h1 className="section-title">Terms</h1>
-      <p className="section-lead">Demo redesign terms — not legal advice.</p>
-      <div className="card" style={{ display: "grid", gap: "0.85rem" }}>
-        <p>
-          This is a redesign demo for <strong>{site.name}</strong>. It is not the live production website.
-          Contact details shown are published by the business for customer communication.
-        </p>
-        <p>
-          The demo contact form opens your own email client and does not store submissions on this host.
-          Do not send sensitive payment data through the form.
-        </p>
-        <p>
-          Questions: <a href={`mailto:${site.email}`}>{site.email}</a> ·{" "}
-          <a href={`tel:${site.phoneTel}`}>{site.phone}</a>
-        </p>
-      </div>
+      <p>
+        This website is a non-live redesign concept. {site.namePlain} remains the brand owner. Pricing and availability
+        are confirmed by the salon when you request an appointment.
+      </p>
+      <p>
+        Demo content may include stock photography placeholders. Salon policies for cancellations, temperament, and coat
+        condition remain those communicated by {site.namePlain} directly.
+      </p>
     </section>
   );
 }

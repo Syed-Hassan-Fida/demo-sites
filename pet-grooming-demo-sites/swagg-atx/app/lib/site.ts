@@ -1,192 +1,320 @@
 export const site = {
-  "slug": "swagg-atx",
-  "name": "SWAGG",
-  "liveUrl": "https://www.swaggatx.com/",
-  "canonical": "https://swagg-atx-demo.vercel.app",
-  "tagline": "Austin’s premiere mobile pet grooming — dogs come first, always.",
-  "kicker": "Mobile spa vans · Austin & surrounding · Est. 2014",
-  "heroLine": "Salon-quality grooms at your door with allergy- and skin-aware styling from award-winning local groomer Jolie Garcia’s team.",
-  "heroAlt": "Happy dog after professional mobile grooming",
-  "seoTitleSuffix": "Mobile pet grooming — Austin TX",
-  "seoDescription": "SWAGG mobile pet grooming vans serving Austin and surrounding areas. Mon–Sat 8–6. Call (512) 202-5920.",
-  "address": "Serving Austin, Texas & surrounding areas (mobile)",
-  "street": "Austin mobile service",
-  "city": "Austin",
-  "region": "TX",
-  "postal": "",
-  "phone": "(512) 202-5920",
-  "phoneTel": "+15122025920",
-  "email": "swaggatxgrooming@gmail.com",
-  "instagram": "",
-  "areaServed": "Austin TX and surrounding areas",
-  "primaryCta": {
-    "label": "Call to book",
-    "href": "tel:+15122025920"
+  slug: "swagg-atx",
+  name: "SWAGG",
+  legalName: "SWAGG Mobile Pet Grooming",
+  liveUrl: "https://www.swaggatx.com/",
+  canonical: "https://swagg-atx-demo.vercel.app",
+  tagline: "Austin’s premiere mobile pet grooming — dogs come first, always.",
+  kicker: "Mobile spa vans · Austin & surrounding · Est. 2014",
+  heroLine:
+    "Salon-quality grooms at your curb with allergy- and skin-aware styling from award-winning Austinite Jolie Garcia’s team.",
+  heroAlt: "Happy dog after a professional mobile groom",
+  seoTitleSuffix: "Mobile pet grooming — Austin TX",
+  seoDescription:
+    "SWAGG mobile pet grooming vans serving Austin and surrounding areas. Full grooms from $85. Mon–Sat 8–6. Call/text (512) 202-5920.",
+  address: "Serving Austin, Texas & surrounding areas (mobile)",
+  street: "Austin mobile service",
+  city: "Austin",
+  region: "TX",
+  postal: "",
+  phone: "(512) 202-5920",
+  phoneTel: "+15122025920",
+  email: "swaggatxgrooming@gmail.com",
+  instagram: "@swaggatx",
+  instagramUrl: "https://instagram.com/swaggatx",
+  facebookUrl: "https://www.facebook.com/SWAGGATX",
+  founder: "Jolie Garcia",
+  hours: "Monday–Saturday 8am–6pm · Sunday closed",
+  areaServed: "Austin TX and surrounding areas",
+  primaryCta: {
+    label: "Book the van",
+    href: "/book",
   },
-  "fonts": {
-    "displayImport": "Space_Grotesk",
-    "bodyImport": "DM_Sans",
-    "displayOpts": ""
+  fonts: {
+    displayImport: "Unbounded",
+    bodyImport: "Figtree",
   },
-  "theme": {
-    "bg": "#f3f1ef",
-    "paper": "#ffffff",
-    "ink": "#121212",
-    "brand": "#1a1a1a",
-    "accent": "#e85d4c",
-    "muted": "#5c5c5c",
-    "heroObjectPosition": "55% center"
+  theme: {
+    bg: "#f1eef0",
+    paper: "#ffffff",
+    ink: "#121014",
+    brand: "#171417",
+    accent: "#e24c4c",
+    pole: "#3535a0",
+    muted: "#5c5658",
+    heroObjectPosition: "52% center",
   },
-  "images": {
-    "hero": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=2000",
-    "g1": "https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g2": "https://images.pexels.com/photos/6816863/pexels-photo-6816863.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g3": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g4": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1000"
+  images: {
+    hero: "https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&w=2000",
+    g1: "https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    g2: "https://images.pexels.com/photos/6131005/pexels-photo-6131005.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    g3: "https://images.pexels.com/photos/8434791/pexels-photo-8434791.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    g4: "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    g5: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    g6: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1000",
   },
-  "trust": [
-    {
-      "title": "Mobile vans",
-      "sub": "We come to you"
-    },
-    {
-      "title": "Dogs first",
-      "sub": "Satisfaction focused"
-    },
-    {
-      "title": "Skin & allergy",
-      "sub": "Treatment-aware styling"
-    },
-    {
-      "title": "Mon–Sat",
-      "sub": "8am–6pm"
-    }
+  trust: [
+    { title: "Mobile spa vans", sub: "We come to you" },
+    { title: "Dogs first", sub: "Satisfaction focused" },
+    { title: "Skin & allergy", sub: "Treatment-aware styling" },
+    { title: "Mon–Sat 8–6", sub: "Text to book" },
   ],
-  "homeServicesTitle": "Mobile spa, serious standards",
-  "homeServicesLead": "Full grooms and skin-aware care without the salon drop-off — route booking keeps your day simple.",
-  "services": [
+  homeServicesTitle: "Mobile spa, serious standards",
+  homeServicesLead:
+    "Full grooms, maintenance trims, and baths in a professional unit at your door — allergy- and skin-aware products included in how we work.",
+  services: [
     {
-      "title": "Full mobile groom",
-      "price": "Quote by coat & size",
-      "blurb": "Haircut, bath, and finish in the van at your location.",
-      "includes": [
-        "Haircut",
-        "Bath & dry",
-        "Nails / ears as needed"
-      ]
+      title: "Full service groom",
+      price: "From $85",
+      blurb:
+        "Haircut, bath, and finish in the van — starting prices by size from the live SWAGG menu.",
+      includes: ["Custom cut", "Bath & dry", "Nails / ears as needed"],
     },
     {
-      "title": "Bath & tidy",
-      "price": "Quote by coat & size",
-      "blurb": "Fresh bath and maintenance tidy between full cuts.",
-      "includes": [
-        "Bath",
-        "Brush",
-        "Sanitary tidy"
-      ]
+      title: "Maintenance trim",
+      price: "From $85",
+      blurb: "Keep the silhouette sharp between full spa days without a salon drop-off.",
+      includes: ["Shape-up trim", "Brush-out", "Van convenience"],
     },
     {
-      "title": "Skin & allergy aware care",
-      "price": "Discuss on booking",
-      "blurb": "Product and handling choices for sensitive coats and skin.",
-      "includes": [
-        "Consult on products",
-        "Gentle handling"
-      ]
-    }
+      title: "Bath package",
+      price: "From $65",
+      blurb: "Fresh bath and tidy for coats that need a reset between cuts.",
+      includes: ["Warm bath", "Dry & brush", "Fresh finish"],
+    },
+    {
+      title: "Allergy & skin-aware care",
+      price: "Discuss on booking",
+      blurb:
+        "SWAGG positions as an allergy and skin treatment–focused pet stylist — product and handling choices for sensitive coats.",
+      includes: ["Pet-safe products", "Gentle pacing", "Coat consult"],
+    },
   ],
-  "pricingLead": "Mobile pricing depends on size, coat, condition, and travel — call or request a quote.",
-  "pricing": [
+  pricingLead:
+    "Starting rates transcribed from the live SWAGG menu (2026-10-28). Coat condition, mats, behavior, and travel may adjust the final ticket — text for your exact quote.",
+  bathIncludes: "Warm bath, dry, and brush-out in the mobile unit",
+  maintenanceIncludes: "Maintenance shape-up trim in the van",
+  fullGroomIncludes: "Full service groom — cut, bath, and finish by size",
+  pricing: [
     {
-      "title": "Full groom",
-      "price": "Custom quote",
-      "note": "Most booked",
-      "items": [
-        "Cut + bath",
-        "Van service"
-      ]
+      title: "Full Groom · Small",
+      size: "Small",
+      price: "$85+",
+      pricePrefix: "Starting at",
+      note: "Most booked starter",
+      package: "full",
+      items: ["Full service grooming", "Mobile van"],
     },
     {
-      "title": "Bath package",
-      "price": "Custom quote",
-      "note": "Between cuts",
-      "items": [
-        "Bath",
-        "Dry",
-        "Brush"
-      ]
+      title: "Full Groom · Medium",
+      size: "Medium",
+      price: "$105+",
+      pricePrefix: "Starting at",
+      note: "",
+      package: "full",
+      items: ["Full service grooming", "Mobile van"],
     },
     {
-      "title": "Add-ons",
-      "price": "As needed",
-      "note": "Coat dependent",
-      "items": [
-        "Deshed",
-        "Specialty treatments"
-      ]
-    }
+      title: "Full Groom · Large",
+      size: "Large",
+      price: "$130+",
+      pricePrefix: "Starting at",
+      note: "",
+      package: "full",
+      items: ["Full service grooming", "Mobile van"],
+    },
+    {
+      title: "Full Groom · XL",
+      size: "XL",
+      price: "$150+",
+      pricePrefix: "Starting at",
+      note: "",
+      package: "full",
+      items: ["Full service grooming", "Mobile van"],
+    },
   ],
-  "addons": [
+  maintenancePricing: [
     {
-      "title": "Deshedding",
-      "price": "Add-on",
-      "blurb": "Seasonal undercoat help for double coats."
+      title: "Maintenance Trim · Small",
+      size: "Small",
+      price: "$85+",
+      pricePrefix: "Starting at",
+      items: ["Maintenance trim"],
     },
     {
-      "title": "Specialty skin care",
-      "price": "Discuss",
-      "blurb": "Allergy- and skin-aware product choices."
-    }
+      title: "Maintenance Trim · Medium",
+      size: "Medium",
+      price: "$105+",
+      pricePrefix: "Starting at",
+      items: ["Maintenance trim"],
+    },
+    {
+      title: "Maintenance Trim · Large",
+      size: "Large",
+      price: "$135+",
+      pricePrefix: "Starting at",
+      items: ["Maintenance trim"],
+    },
+    {
+      title: "Maintenance Trim · XL",
+      size: "XL",
+      price: "$165+",
+      pricePrefix: "Starting at",
+      items: ["Maintenance trim"],
+    },
   ],
-  "reviews": [
+  bathPricing: [
     {
-      "quote": "We’ve had J as our groomer since we got our golden doodles. She is so good with them.",
-      "who": "Julie"
+      title: "Bath · Small",
+      size: "Small",
+      price: "$65+",
+      pricePrefix: "Starting at",
+      items: ["Bath package"],
     },
     {
-      "quote": "Jolie did an amazing job and made Dallas feel super comfortable. Definitely will become regulars!",
-      "who": "Doreena"
+      title: "Bath · Medium",
+      size: "Medium",
+      price: "$85+",
+      pricePrefix: "Starting at",
+      items: ["Bath package"],
     },
     {
-      "quote": "Easy to communicate with and my dog not only smells good, but looks good too!",
-      "who": "Michael"
-    }
+      title: "Bath · Large",
+      size: "Large",
+      price: "$105+",
+      pricePrefix: "Starting at",
+      items: ["Bath package"],
+    },
+    {
+      title: "Bath · XL",
+      size: "XL",
+      price: "$120+",
+      pricePrefix: "Starting at",
+      items: ["Bath package"],
+    },
   ],
-  "faqs": [
+  addons: [
     {
-      "q": "Where do you groom?",
-      "a": "In mobile spa vans at your home across Austin and surrounding areas."
+      title: "Allergy & skin consult",
+      price: "On request",
+      blurb: "Talk through sensitive coats and product choices before the van arrives.",
     },
     {
-      "q": "Hours?",
-      "a": "Monday–Saturday 8am–6pm. Sunday closed."
+      title: "Specialty coat finish",
+      price: "Discuss",
+      blurb: "Creative, quality styles with professional equipment — SWAGG’s craft focus.",
     },
-    {
-      "q": "How do I book?",
-      "a": "Call (512) 202-5920 or email swaggatxgrooming@gmail.com — include your neighborhood and dog’s breed/coat."
-    },
-    {
-      "q": "Why mobile?",
-      "a": "Less travel stress for pets, and you get salon-quality results without the drop-off shuffle."
-    }
   ],
-  "bookLead": "Tell us your area, dog’s breed/coat, and preferred days. Call (512) 202-5920 for the fastest route fit.",
-  "locations": [],
-  "ctaBandTitle": "Book the van",
-  "ctaBandLead": "Same SWAGG standards — clearer booking path for busy Austin pet parents.",
-  "pages": [
+  austinAreas: [
+    "Central Austin",
+    "South Congress",
+    "Zilker",
+    "Barton Hills",
+    "Travis Heights",
+    "East Austin",
+    "Mueller",
+    "Hyde Park",
+    "North Loop",
+    "Crestview",
+    "Allandale",
+    "Brentwood",
+    "Tarrytown",
+    "Westlake",
+    "Rollingwood",
+    "Bee Cave",
+    "Lakeway",
+    "Cedar Park",
+    "Round Rock",
+    "Pflugerville",
+    "Manor",
+    "Elgin",
+    "Buda",
+    "Kyle",
+    "Dripping Springs",
+    "Manchaca",
+    "Oak Hill",
+    "South Austin",
+    "North Austin",
+    "Domain / Arboretum",
+  ],
+  reviews: [
+    {
+      quote:
+        "We’ve had J as our groomer since we got our golden doodles. She is so good with them and does a fantastic job. Highly recommend.",
+      who: "Julie",
+    },
+    {
+      quote:
+        "We took our pup Dallas to see Jolie and it was a great experience! She did an amazing job and made Dallas felt super comfortable. Definitely will become regulars!",
+      who: "Doreena",
+    },
+    {
+      quote:
+        "This was my first experience going to a pet salon & I loved it! SWAGG was really easy to communicate with and Jolie did an amazing job with my pup! My dog not only smells good, but look good too! I'll definitely be returning",
+      who: "Michael",
+    },
+  ],
+  faqs: [
+    {
+      q: "Where do you groom?",
+      a: "In professional mobile spa vans at your home across Austin and surrounding areas — we come to you with full equipment.",
+    },
+    {
+      q: "What are your hours?",
+      a: "Monday–Saturday 8am–6pm. Sunday closed.",
+    },
+    {
+      q: "How do I book?",
+      a: "Text or call (512) 202-5920 for the fastest route fit, email swaggatxgrooming@gmail.com, or send a request on the Book page. Include your neighborhood, dog’s breed/coat, and preferred days.",
+    },
+    {
+      q: "Do you publish starting prices?",
+      a: "Yes — Bath from $65, Maintenance Trim from $85, and Full Groom from $85 by size. Final rates depend on coat, condition, and travel; text for your specific quote.",
+    },
+    {
+      q: "What makes SWAGG different?",
+      a: "Dogs come first, always. Founded in 2014 by award-winning Austinite Jolie Garcia, SWAGG focuses on unique quality styles, pet-safe products, and allergy- and skin-aware pet styling in clean, well-operating mobile spas.",
+    },
+    {
+      q: "Who is Jolie Garcia?",
+      a: "SWAGG’s founder — a local Austinite with 20+ years in pet grooming and AKC conformation showing. She’s an award-winning groomer who has trained with top groomers from England, Thailand, Malaysia, and Japan.",
+    },
+    {
+      q: "Do you work with sensitive skin or allergies?",
+      a: "Yes — SWAGG positions as an allergy and skin treatment–focused pet stylist and uses pet-safe products chosen to benefit skin and coat. Mention sensitivities when you book.",
+    },
+    {
+      q: "Is it appointment only?",
+      a: "Yes. Mobile grooming is by appointment — contact us for availability. Expect a reply within about 24 hours on form requests.",
+    },
+  ],
+  bookLead:
+    "Tell us your neighborhood, dog’s breed/coat/size, and preferred days. Text or call (512) 202-5920 for the fastest route fit — or send a request below.",
+  aboutMission:
+    "Our mission is to provide caring, exceptional pet grooming in Austin Texas by having pet groomers who build relationships with our clients, both 2-legged and 4-legged. We are committed to a fun, compassionate environment with clean, well-operating mobile spas.",
+  aboutFounder:
+    "SWAGG was created in 2014 by Jolie Garcia, a local Austinite, and was quickly voted one of Austin’s top pet grooming salons, gaining respect and support from many local veterinarians. With over 20 years in pet grooming and showing dogs in AKC conformation competitively, Jolie is an award-winning groomer who has trained with top groomers from England, Thailand, Malaysia, and Japan.",
+  aboutCraft:
+    "SWAGG prides itself on unique, quality styles and pet safety. We only use the best products and professional equipment — pet-safe formulas that benefit skin and coat — to put some SWAGG back in their WAGG.",
+  ctaBandTitle: "Book the van",
+  ctaBandLead:
+    "Same SWAGG standards — clearer size pricing and a faster text-to-book path for busy Austin pet parents.",
+  pages: [
     "",
+    "about",
     "services",
     "pricing",
     "gallery",
     "faq",
+    "service-area",
     "book",
     "contact",
     "privacy",
     "terms",
-    "accessibility"
+    "accessibility",
   ],
-  "handoffNotes": "- Add /service-area page content in a follow-up if pitching neighborhoods list.\n- Founder credit: Jolie Garcia per public site."
+  handoffNotes:
+    "- Full Groom $85/$105/$130/$150, Maintenance $85/$105/$135/$165, Bath $65/$85/$105/$120 from live /menue (2026-10-28).\n- Reviews are verbatim from live home (Julie, Doreena, Michael).\n- Gallery uses Pexels stock until Jolie provides van/client photos.\n- Old URLs: /menue → /pricing, /appointments → /book.",
 };
 
 export type SiteConfig = typeof site;

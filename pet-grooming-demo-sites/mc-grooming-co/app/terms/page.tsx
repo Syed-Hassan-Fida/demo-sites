@@ -3,24 +3,25 @@ import { site } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Demo redesign terms — not legal advice.",
+  description: `Demo terms for ${site.name} — not legal advice; independent of Zen Den retail.`,
   alternates: { canonical: "/terms" },
 };
 
-export default function LegalPage() {
+export default function TermsPage() {
   return (
-    <section className="wrap" style={{ paddingTop: "3rem", maxWidth: "42rem" }}>
+    <section className="wrap page-hero" style={{ maxWidth: "42rem" }}>
       <p className="section-kicker">Legal</p>
       <h1 className="section-title">Terms</h1>
       <p className="section-lead">Demo redesign terms — not legal advice.</p>
       <div className="card" style={{ display: "grid", gap: "0.85rem" }}>
         <p>
-          This is a redesign demo for <strong>{site.name}</strong>. It is not the live production website.
-          Contact details shown are published by the business for customer communication.
+          This site is a redesign concept for <strong>{site.name}</strong> / {site.owner}. It is not
+          Zen Den Pet Spa’s website. Grooming appointments are with {site.owner} as an independent
+          business renting space.
         </p>
         <p>
-          The demo contact form opens your own email client and does not store submissions on this host.
-          Do not send sensitive payment data through the form.
+          Service details, availability, and pricing are confirmed directly with {site.owner}. Stock
+          photography and placeholder reviews are for demo layout only.
         </p>
         <p>
           Questions: <a href={`mailto:${site.email}`}>{site.email}</a> ·{" "}

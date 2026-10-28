@@ -3,30 +3,21 @@ import { site } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Accessibility",
-  description: "Our accessibility commitment for this demo.",
+  description: `Accessibility statement for the ${site.namePlain} redesign demo.`,
   alternates: { canonical: "/accessibility" },
 };
 
-export default function LegalPage() {
+export default function AccessibilityPage() {
   return (
-    <section className="wrap" style={{ paddingTop: "3rem", maxWidth: "42rem" }}>
+    <section className="wrap prose" style={{ paddingTop: "3rem" }}>
       <p className="section-kicker">Legal</p>
       <h1 className="section-title">Accessibility</h1>
-      <p className="section-lead">Our accessibility commitment for this demo.</p>
-      <div className="card" style={{ display: "grid", gap: "0.85rem" }}>
-        <p>
-          This is a redesign demo for <strong>{site.name}</strong>. It is not the live production website.
-          Contact details shown are published by the business for customer communication.
-        </p>
-        <p>
-          The demo contact form opens your own email client and does not store submissions on this host.
-          Do not send sensitive payment data through the form.
-        </p>
-        <p>
-          Questions: <a href={`mailto:${site.email}`}>{site.email}</a> ·{" "}
-          <a href={`tel:${site.phoneTel}`}>{site.phone}</a>
-        </p>
-      </div>
+      <p>
+        We aim for WCAG 2.2 AA patterns on this demo: semantic headings, keyboard-focus styles, form labels, and
+        reduced-motion respect. If you hit a barrier, email{" "}
+        <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
+        <a href={`tel:${site.phoneTel}`}>{site.phone}</a>.
+      </p>
     </section>
   );
 }

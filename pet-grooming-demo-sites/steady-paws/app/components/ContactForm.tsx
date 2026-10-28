@@ -2,18 +2,21 @@
 import { useState, type FormEvent } from "react";
 import { site } from "../lib/site";
 
-export function ContactForm({ intent = "general" }: { intent?: string }) {
+export function ContactForm({ intent = "general" }: { intent?: "general" | "booking" | "contact" }) {
   const [ok, setOk] = useState(false);
   const [err, setErr] = useState("");
+  const isBooking = intent === "booking";
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErr("");
     const fd = new FormData(e.currentTarget);
-    if (String(fd.get("company") || "").trim()) return; // honeypot
+    if (String(fd.get("company") || "").trim()) return;
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
     const phone = String(fd.get("phone") || "").trim();
+    const dog = String(fd.get("dog") || "").trim();
+    const temperament = String(fd.get("temperament") || "").trim();
     const message = String(fd.get("message") || "").trim();
     const consent = fd.get("consent");
     if (!name || !email || !message) {
@@ -26,7 +29,7 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
     }
     const subject = encodeURIComponent(`[${site.name}] ${intent} — ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nIntent: ${intent}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nIntent: ${intent}\nDog / breed: ${dog}\nTemperament / special needs: ${temperament}\n\n${message}`
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setOk(true);
@@ -35,9 +38,9 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
   if (ok) {
     return (
       <div className="form-success" role="status">
-        Thanks — your mail app should open with the details. If it doesn’t, email{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a> or call{" "}
-        <a href={`tel:${site.phoneTel}`}>{site.phone}</a>.
+        Thanks — your mail app should open with the details. Faster path: call/text{" "}
+        <a href={`tel:${site.phoneTel}`}>{site.phone}</a>. If mail didn’t open, email{" "}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
       </div>
     );
   }
@@ -53,12 +56,37 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
         <input name="email" type="email" autoComplete="email" required />
       </label>
       <label>
-        Phone
+        Phone {isBooking ? "(preferred)" : ""}
         <input name="phone" type="tel" autoComplete="tel" />
       </label>
+      {isBooking ? (
+        <>
+          <label>
+            Dog name & breed
+            <input name="dog" placeholder="e.g. Red — German Shepherd" />
+          </label>
+          <label>
+            Temperament / special needs
+            <textarea
+              name="temperament"
+              rows={3}
+              placeholder="Anxious, reactive, senior, mobility notes, coat mats, etc."
+            />
+          </label>
+        </>
+      ) : null}
       <label>
-        Message
-        <textarea name="message" rows={5} required />
+        {isBooking ? "Preferred days & notes" : "Message"}
+        <textarea
+          name="message"
+          rows={5}
+          required
+          placeholder={
+            isBooking
+              ? "Preferred days/times, last groom date, and anything Crystal should know."
+              : undefined
+          }
+        />
       </label>
       <label className="hp" aria-hidden="true">
         Company
@@ -69,13 +97,25 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
           <input name="consent" type="checkbox" required style={{ marginTop: "0.2rem" }} />
           <span>
             I agree that {site.name} may use these details to respond. See the{" "}
-            <a href="/privacy" style={{ textDecoration: "underline" }}>privacy policy</a>.
+            <a href="/privacy" style={{ textDecoration: "underline" }}>
+              privacy policy
+            </a>
+            .
           </span>
         </span>
       </label>
-      {err ? <p className="form-note" role="alert" style={{ color: "#8a2a2a" }}>{err}</p> : null}
-      <button className="btn btn-primary" type="submit">Send request</button>
-      <p className="form-note">Demo form opens your email client — no data is stored on this demo host.</p>
+      {err ? (
+        <p className="form-note" role="alert" style={{ color: "#8a2a2a" }}>
+          {err}
+        </p>
+      ) : null}
+      <button className="btn btn-primary" type="submit">
+        {isBooking ? "Send booking request" : "Send message"}
+      </button>
+      <p className="form-note">
+        Demo form opens your email client — no data is stored on this demo host. Calling or texting
+        is still best.
+      </p>
     </form>
   );
 }

@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { Figtree, Unbounded } from "next/font/google";
 import { DemoBanner, Footer, Header, MobileBar } from "./components/SiteChrome";
 import { site } from "./lib/site";
 import "./globals.css";
 
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
-const body = DM_Sans({ subsets: ["latin"], variable: "--font-body" });
+const display = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700"],
+});
+const body = Figtree({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
 
 const url = site.canonical;
 
@@ -17,13 +24,23 @@ export const metadata: Metadata = {
   },
   description: site.seoDescription,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
   openGraph: {
     title: site.name,
     description: site.seoDescription,
     url,
-    siteName: site.name,
+    siteName: site.legalName,
     type: "website",
     locale: "en_US",
+    images: [{ url: "/logo.png", alt: `${site.legalName} logo` }],
   },
   twitter: {
     card: "summary_large_image",
@@ -35,30 +52,46 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "PetGroomer",
-  name: site.name,
+  name: site.legalName,
   description: site.seoDescription,
   url,
   telephone: site.phone,
   email: site.email,
+  image: `${url}/logo.png`,
+  sameAs: [site.instagramUrl, site.facebookUrl],
+  areaServed: site.areaServed,
+  founder: {
+    "@type": "Person",
+    name: site.founder,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+  ],
   address: {
     "@type": "PostalAddress",
-    streetAddress: (site as { street?: string }).street || site.address,
+    streetAddress: site.street,
     addressLocality: site.city,
     addressRegion: site.region,
-    postalCode: (site as { postal?: string }).postal || undefined,
     addressCountry: "US",
   },
-  areaServed: (site as { areaServed?: string }).areaServed || site.city,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable}`}>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <DemoBanner />
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <MobileBar />
       </body>

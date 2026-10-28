@@ -4,24 +4,32 @@ import { site } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: `Frequently asked questions for ${site.name}.`,
+  description: `FAQ for ${site.name} — booking, Zen Den vs independent, retail closure, one-on-one care.`,
   alternates: { canonical: "/faq" },
 };
 
 export default function FaqPage() {
   return (
-    <section className="wrap faq" style={{ paddingTop: "3rem" }}>
+    <section className="wrap page-hero faq">
       <p className="section-kicker">FAQ</p>
-      <h1 className="section-title">Common questions</h1>
-      <p className="section-lead">Straight answers so booking feels easy.</p>
+      <h1 className="section-title">Straight answers</h1>
+      <p className="section-lead">
+        Especially useful while Zen Den retail access may be limited — book the groomer, not the
+        shop desk.
+      </p>
       {site.faqs.map((f) => (
         <details key={f.q}>
           <summary>{f.q}</summary>
           <p>{f.a}</p>
         </details>
       ))}
-      <p style={{ marginTop: "1.5rem" }}>
-        <Link className="btn btn-primary" href="/book">Still need help? Book or ask</Link>
+      <p style={{ marginTop: "1.5rem", display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+        <Link className="btn btn-primary" href="/book">
+          Still need help? Book or ask
+        </Link>
+        <a className="btn btn-ghost" href={site.primaryCta.href}>
+          {site.primaryCta.label}
+        </a>
       </p>
     </section>
   );

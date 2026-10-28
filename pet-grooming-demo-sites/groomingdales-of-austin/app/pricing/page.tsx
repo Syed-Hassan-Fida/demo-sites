@@ -4,46 +4,37 @@ import { site } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: `Pricing and packages for ${site.name}.`,
+  description: `Service package ranges and nail trim pricing for ${site.namePlain}.`,
   alternates: { canonical: "/pricing" },
 };
 
-type Addon = { title: string; price: string; blurb: string };
-
 export default function PricingPage() {
-  const addons = ((site as { addons?: Addon[] }).addons || []);
-
   return (
     <section className="wrap" style={{ paddingTop: "3rem" }}>
       <p className="section-kicker">Pricing</p>
-      <h1 className="section-title">Packages & starting rates</h1>
+      <h1 className="section-title">Clear starting points</h1>
       <p className="section-lead">{site.pricingLead}</p>
       <div className="grid-3">
         {site.pricing.map((p) => (
           <article className="card" key={p.title}>
-            <h2 style={{ fontSize: "1.35rem", color: "var(--brand)" }}>{p.title}</h2>
+            <p className="section-kicker" style={{ marginBottom: "0.35rem" }}>{p.note}</p>
+            <h2 style={{ fontSize: "1.45rem", color: "var(--rose)" }}>{p.title}</h2>
             <div className="price">{p.price}</div>
-            <p>{p.note}</p>
-            {p.items?.length ? <ul>{p.items.map((i: string) => <li key={i}>{i}</li>)}</ul> : null}
+            <ul>
+              {p.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>
-      {addons.length ? (
-        <>
-          <h2 className="section-title" style={{ marginTop: "2.5rem", fontSize: "1.8rem" }}>Add-ons</h2>
-          <div className="grid-2">
-            {addons.map((a) => (
-              <article className="card" key={a.title}>
-                <h3>{a.title}</h3>
-                <div className="price">{a.price}</div>
-                <p>{a.blurb}</p>
-              </article>
-            ))}
-          </div>
-        </>
-      ) : null}
+      <div className="card" style={{ marginTop: "1.75rem" }}>
+        <h2 style={{ color: "var(--rose)", fontSize: "1.25rem", marginBottom: "0.5rem" }}>Nail trim loyalty</h2>
+        <p>Purchase 7 nail trims and the 8th is free — must be used within one year of purchase.</p>
+        <p style={{ marginTop: "0.5rem" }}>{site.nailWalkIn}</p>
+      </div>
       <p style={{ marginTop: "1.5rem" }}>
-        <Link className="btn btn-primary" href="/book">Book with these packages</Link>
+        <Link className="btn btn-primary" href="/book">Request an estimate</Link>
       </p>
     </section>
   );

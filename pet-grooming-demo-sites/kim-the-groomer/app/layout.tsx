@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant, IBM_Plex_Sans } from "next/font/google";
-import { DemoBanner, Footer, Header, MobileBar } from "./components/SiteChrome";
+import { Bodoni_Moda, Figtree } from "next/font/google";
+import { DemoBanner, Footer, Header, MobileBar, Notice } from "./components/SiteChrome";
 import { site } from "./lib/site";
 import "./globals.css";
 
-const display = Cormorant({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700"] });
-const body = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-body" });
+const display = Bodoni_Moda({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+});
+const body = Figtree({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+});
 
 const url = site.canonical;
 
@@ -36,28 +44,33 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "PetGroomer",
   name: site.name,
+  alternateName: site.owner,
   description: site.seoDescription,
   url,
   telephone: site.phone,
   email: site.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: (site as { street?: string }).street || site.address,
+    streetAddress: site.street,
     addressLocality: site.city,
     addressRegion: site.region,
-    postalCode: (site as { postal?: string }).postal || undefined,
+    postalCode: site.postal,
     addressCountry: "US",
   },
-  areaServed: (site as { areaServed?: string }).areaServed || site.city,
+  areaServed: site.areaServed,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable}`}>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <DemoBanner />
         <Header />
+        <Notice />
         <main>{children}</main>
         <Footer />
         <MobileBar />

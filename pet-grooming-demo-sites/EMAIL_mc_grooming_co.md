@@ -25,7 +25,8 @@ Right now new clients mostly find you through the Zen Den host page. You’re an
 I built a redesign concept branded to MC Grooming Co (not Zen Den’s site):
 
 - Demo site: DEMO_URL  
-- Book / services / FAQ: DEMO_URL/book · DEMO_URL/services · DEMO_URL/faq  
+- About / book / FAQ: DEMO_URL/about · DEMO_URL/book · DEMO_URL/faq  
+
 
 Offer (scoped): $150–$300 for the redesign.  
 You pay only if you love the demo and want me to finish it.

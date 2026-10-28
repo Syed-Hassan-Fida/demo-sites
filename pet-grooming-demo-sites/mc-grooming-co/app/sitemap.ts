@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next";
 import { site } from "./lib/site";
 
-const paths = ["","services","pricing","gallery","faq","book","contact","privacy","terms","accessibility"];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.canonical.replace(/\/$/, "");
-  return paths.map((p) => ({
+  return site.pages.map((p) => ({
     url: p ? `${base}/${p}` : base,
     lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: p === "" ? 1 : 0.7,
+    changeFrequency: "monthly" as const,
+    priority: p === "" ? 1 : p === "about" || p === "book" ? 0.85 : 0.7,
   }));
 }

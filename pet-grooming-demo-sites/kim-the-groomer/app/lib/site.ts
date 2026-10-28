@@ -1,170 +1,156 @@
 export const site = {
-  "slug": "kim-the-groomer",
-  "name": "Kim the Groomer",
-  "liveUrl": "https://www.zendenpetspa.com/",
-  "canonical": "https://kim-the-groomer-demo.vercel.app",
-  "tagline": "Kimberly Chatman — show-handler background, family salon roots, accepting new Denver clients.",
-  "kicker": "Solo groomer · Zen Den · Handler experience",
-  "heroLine": "Professional handling know-how with neighborhood warmth — book Kim directly at the Oneida Street table.",
-  "heroAlt": "Well-presented dog after professional grooming",
-  "seoTitleSuffix": "Independent dog groomer — Denver",
-  "seoDescription": "Kim the Groomer / Kimberly Chatman. Independent groomer at Zen Den, 2247 Oneida St, Denver. Accepting new clients. Call (360) 710-4383.",
-  "address": "2247 Oneida St, Denver, CO 80207 (space inside Zen Den)",
-  "street": "2247 Oneida St",
-  "city": "Denver",
-  "region": "CO",
-  "postal": "80207",
-  "phone": "(360) 710-4383",
-  "phoneTel": "+13607104383",
-  "email": "kimthegroomer25@gmail.com",
-  "instagram": "",
-  "primaryCta": {
-    "label": "Call Kim",
-    "href": "tel:+13607104383"
+  slug: "kim-the-groomer",
+  name: "Kim the Groomer",
+  owner: "Kimberly Chatman",
+  legalName: "Kim The Groomer Ltd.",
+  liveUrl: "https://www.zendenpetspa.com/",
+  canonical: "https://kim-the-groomer-demo.vercel.app",
+  tagline:
+    "Independent Denver groomer with professional handler roots — book Kim directly at her Zen Den table.",
+  kicker: "Independent · Show-handler background · Accepting new clients",
+  heroLine:
+    "Ring-aware presentation and salon-family craft — call Kim for your pup’s next full finish at Oneida Street.",
+  heroAlt: "Confident dog with polished coat after a professional groom",
+  seoTitleSuffix: "Independent dog groomer — Denver, CO",
+  seoDescription:
+    "Kim the Groomer / Kimberly Chatman — professional show-dog handler turned independent groomer at Zen Den, 2247 Oneida St, Denver. Accepting new clients. Call (360) 710-4383.",
+  address: "2247 Oneida St, Denver, CO 80207 (space inside Zen Den Pet Spa)",
+  street: "2247 Oneida St",
+  city: "Denver",
+  region: "CO",
+  postal: "80207",
+  neighborhood: "Park Hill",
+  phone: "(360) 710-4383",
+  phoneTel: "+13607104383",
+  email: "kimthegroomer25@gmail.com",
+  instagram: "",
+  areaServed: "Park Hill and greater Denver, CO",
+  notice: {
+    title: "Grooming continues — book Kim directly",
+    body: "Zen Den retail is temporarily closed for building repair. Independent grooming still runs by appointment. Call or email Kim — do not rely on the retail desk.",
   },
-  "fonts": {
-    "displayImport": "Cormorant",
-    "bodyImport": "IBM_Plex_Sans",
-    "displayOpts": ", weight: [500, 600, 700]"
+  primaryCta: {
+    label: "Call Kim",
+    href: "tel:+13607104383",
   },
-  "theme": {
-    "bg": "#f6efe8",
-    "paper": "#fffcf8",
-    "ink": "#241816",
-    "brand": "#6b2b3a",
-    "accent": "#b08a6a",
-    "muted": "#6a5550",
-    "heroObjectPosition": "58% center"
+  secondaryCta: {
+    label: "Email Kim",
+    href: "mailto:kimthegroomer25@gmail.com",
   },
-  "images": {
-    "hero": "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=2000",
-    "g1": "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g2": "https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g3": "https://images.pexels.com/photos/6816863/pexels-photo-6816863.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "g4": "https://images.pexels.com/photos/8434791/pexels-photo-8434791.jpeg?auto=compress&cs=tinysrgb&w=1000"
-  },
-  "trust": [
+  aboutLead:
+    "Kimberly Chatman has been working with dogs her whole life. She has shown dogs as a professional handler and worked in her mother’s grooming salon.",
+  aboutBody:
+    "Kim rents her own table at Zen Den Pet Spa so neighborhood clients get handler-trained eyes on silhouette, coat, and finish — with the warmth of a family salon. She runs Kim The Groomer Ltd. as an independent practice: her phone, her email, her book. She is accepting new clients.",
+  homeServicesTitle: "Handler eyes. Salon finish.",
+  homeServicesLead:
+    "Every visit is paced for the dog in front of her — cut, bath, and presentation shaped by show-ring discipline and mom’s salon roots.",
+  services: [
     {
-      "title": "Handler background",
-      "sub": "Show experience"
+      title: "Full groom",
+      price: "Quote by dog",
+      blurb:
+        "Complete haircut and spa finish with show-aware balance — silhouette, feet, and face shaped for everyday life.",
+      includes: ["Breed-aware cut", "Bath & conditioner", "Nails, ears, finish"],
     },
     {
-      "title": "Salon roots",
-      "sub": "Family craft"
+      title: "Bath & brush",
+      price: "Quote by dog",
+      blurb: "Maintenance visits that keep coats comfortable between full grooms.",
+      includes: ["Bath", "Thorough dry", "Brush-out"],
     },
     {
-      "title": "New clients",
-      "sub": "Accepting now"
+      title: "New client intro",
+      price: "Discuss needs",
+      blurb:
+        "Accepting new neighborhood clients — share breed, coat, temperament, and any handling notes up front.",
+      includes: ["Phone consult", "Custom plan", "First-visit pacing"],
     },
-    {
-      "title": "Oneida St",
-      "sub": "Zen Den space"
-    }
   ],
-  "homeServicesTitle": "Personal table, polished results",
-  "homeServicesLead": "Kim brings handler discipline and salon upbringing to every appointment — contact her directly.",
-  "services": [
+  pricingLead:
+    "Independent pricing by breed, coat condition, and temperament — call or email for a quote before you book.",
+  pricing: [
     {
-      "title": "Full groom",
-      "price": "Quote by dog",
-      "blurb": "Complete cut and spa finish with show-aware presentation.",
-      "includes": [
-        "Haircut",
-        "Bath",
-        "Finish"
-      ]
+      title: "Full groom",
+      price: "On request",
+      note: "Signature visit",
+      items: ["Haircut", "Bath & condition", "Nails, ears, polish"],
     },
     {
-      "title": "Bath & brush",
-      "price": "Quote by dog",
-      "blurb": "Maintenance visits between full grooms.",
-      "includes": [
-        "Bath",
-        "Dry",
-        "Brush"
-      ]
+      title: "Bath & brush",
+      price: "On request",
+      note: "Maintenance",
+      items: ["Bath", "Dry", "Brush-out"],
     },
     {
-      "title": "New client intro",
-      "price": "Discuss needs",
-      "blurb": "Accepting new neighborhood clients — share temperament and coat notes up front.",
-      "includes": [
-        "Consult",
-        "Custom plan"
-      ]
-    }
+      title: "Detail work",
+      price: "As needed",
+      note: "Coat dependent",
+      items: ["Nails", "Ears", "Sanitary trim"],
+    },
   ],
-  "pricingLead": "Independent pricing by breed and coat — call or email for a quote.",
-  "pricing": [
-    {
-      "title": "Full groom",
-      "price": "On request",
-      "note": "Signature",
-      "items": [
-        "Cut",
-        "Bath",
-        "Finish"
-      ]
-    },
-    {
-      "title": "Bath visit",
-      "price": "On request",
-      "note": "Maintenance",
-      "items": [
-        "Bath",
-        "Brush"
-      ]
-    },
-    {
-      "title": "Detail work",
-      "price": "As needed",
-      "note": "Coat dependent",
-      "items": [
-        "Nails",
-        "Ears",
-        "Sanitary"
-      ]
-    }
+  addons: [] as { title: string; price: string; blurb: string }[],
+  trust: [
+    { title: "Handler background", sub: "Show-ring eye" },
+    { title: "Salon roots", sub: "Mom’s craft" },
+    { title: "New clients", sub: "Accepting now" },
+    { title: "Oneida St", sub: "Zen Den table" },
   ],
-  "addons": [],
-  "reviews": [
+  reviews: [
     {
-      "quote": "Placeholder — swap for Kim’s real client quotes before launch.",
-      "who": "Denver client"
+      quote:
+        "[Placeholder] Swap for a real client quote before launch — Kim’s finishes speak for themselves.",
+      who: "Denver client",
+      meta: "Placeholder",
     },
     {
-      "quote": "You can tell she has handler eyes for silhouette and finish.",
-      "who": "Show-aware pet parent"
+      quote: "You can tell she has handler eyes for silhouette and finish.",
+      who: "Show-aware pet parent",
+      meta: "Demo voice",
     },
     {
-      "quote": "Direct booking with Kim is so much simpler.",
-      "who": "New client"
-    }
+      quote: "Booking Kim directly is simple — phone, email, done.",
+      who: "New Park Hill client",
+      meta: "Demo voice",
+    },
   ],
-  "faqs": [
+  faqs: [
     {
-      "q": "Independent or Zen Den employee?",
-      "a": "Independent groomer renting space. Book Kim directly — grooming continues even if retail is temporarily closed."
+      q: "Is Kim part of Zen Den retail?",
+      a: "No. Kimberly Chatman is an independent groomer renting space at Zen Den Pet Spa. Book her directly by phone or email — grooming continues even when retail access is limited.",
     },
     {
-      "q": "New clients?",
-      "a": "Yes — Kim is accepting new clients."
+      q: "Is she accepting new clients?",
+      a: "Yes — Kim is accepting new clients. Call (360) 710-4383 or email kimthegroomer25@gmail.com with breed, coat, and preferred days.",
     },
     {
-      "q": "Contact?",
-      "a": "Call (360) 710-4383 or email kimthegroomer25@gmail.com."
+      q: "What is her background?",
+      a: "Kim has worked with dogs her whole life. She showed dogs as a professional handler and worked in her mother’s grooming salon before opening her independent Denver table.",
     },
     {
-      "q": "Location?",
-      "a": "2247 Oneida St, Denver, CO 80207."
-    }
+      q: "Where is the table?",
+      a: "2247 Oneida St, Denver, CO 80207 — inside Zen Den Pet Spa. Confirm pickup/drop-off when you book; retail may be closed during building repair.",
+    },
+    {
+      q: "How do I get a price?",
+      a: "Pricing depends on breed, coat, and condition. Call or email for a quote — there is no published menu on the host site.",
+    },
   ],
-  "bookLead": "Call (360) 710-4383 with breed, coat, and preferred days. New clients welcome.",
-  "locations": [],
-  "ctaBandTitle": "Book Kim directly",
-  "ctaBandLead": "A branded page that matches her craft — not just a host-site blurb.",
-  "pages": [
+  bookLead:
+    "Call (360) 710-4383 with breed, coat notes, and preferred days. New clients welcome. Or send the form below and Kim will follow up.",
+  locations: [] as {
+    name: string;
+    address: string;
+    phone: string;
+    phoneTel: string;
+    email?: string;
+    hours?: string;
+  }[],
+  ctaBandTitle: "Book Kim — not a host-site blurb",
+  ctaBandLead:
+    "A personal page for an independent groomer: call, email, or request a visit for your next finish.",
+  pages: [
     "",
+    "about",
     "services",
     "pricing",
     "gallery",
@@ -173,9 +159,10 @@ export const site = {
     "contact",
     "privacy",
     "terms",
-    "accessibility"
+    "accessibility",
   ],
-  "handoffNotes": "- First branded site (was host-profile only).\n- Reviews marked as placeholders."
+  handoffNotes:
+    "- First branded site (was Zen Den host-profile only).\n- Real Zen Den portrait in public/assets/kim-portrait.jpg.\n- No personal logo — wordmark only.\n- Reviews marked as placeholders.\n- Pricing quote-led (not published live).",
 };
 
 export type SiteConfig = typeof site;

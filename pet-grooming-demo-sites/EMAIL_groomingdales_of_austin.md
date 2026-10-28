@@ -28,7 +28,8 @@ I built a redesign concept (not live as your site) so you can see the difference
 
 - Demo site: DEMO_URL  
 - Book request: DEMO_URL/book  
-- Services, pricing, gallery, FAQ: DEMO_URL/services · DEMO_URL/pricing · DEMO_URL/gallery · DEMO_URL/faq  
+- Services, pricing, gallery, FAQ, education: DEMO_URL/services · DEMO_URL/pricing · DEMO_URL/gallery · DEMO_URL/faq · DEMO_URL/education  
+
 
 Offer (scoped): $150–$300 for the redesign.  
 You pay only if you love the demo and want me to finish it.

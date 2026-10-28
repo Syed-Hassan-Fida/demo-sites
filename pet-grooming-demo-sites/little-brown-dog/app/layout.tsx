@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Karla } from "next/font/google";
+import { Quattrocento, Quattrocento_Sans } from "next/font/google";
 import { DemoBanner, Footer, Header, MobileBar } from "./components/SiteChrome";
 import { site } from "./lib/site";
 import "./globals.css";
 
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display" });
-const body = Karla({ subsets: ["latin"], variable: "--font-body" });
+const display = Quattrocento({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "700"],
+});
+const body = Quattrocento_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "700"],
+});
 
 const url = site.canonical;
 
@@ -17,6 +25,10 @@ export const metadata: Metadata = {
   },
   description: site.seoDescription,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
   openGraph: {
     title: site.name,
     description: site.seoDescription,
@@ -24,6 +36,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
     locale: "en_US",
+    images: [{ url: "/logo.png", alt: `${site.name} wordmark` }],
   },
   twitter: {
     card: "summary_large_image",
@@ -40,15 +53,20 @@ const jsonLd = {
   url,
   telephone: site.phone,
   email: site.email,
+  image: `${url}/logo.png`,
   address: {
     "@type": "PostalAddress",
-    streetAddress: (site as { street?: string }).street || site.address,
+    streetAddress: site.street,
     addressLocality: site.city,
     addressRegion: site.region,
-    postalCode: (site as { postal?: string }).postal || undefined,
+    postalCode: site.postal,
     addressCountry: "US",
   },
-  areaServed: (site as { areaServed?: string }).areaServed || site.city,
+  areaServed: "Denver Lower Highland / Navajo Art District",
+  sameAs: [
+    "https://instagram.com/lil_brn_dog",
+    "https://www.facebook.com/littlebrowndogpetgroomingstudio",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

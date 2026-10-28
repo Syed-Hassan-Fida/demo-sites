@@ -14,6 +14,8 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
     const phone = String(fd.get("phone") || "").trim();
+    const neighborhood = String(fd.get("neighborhood") || "").trim();
+    const dog = String(fd.get("dog") || "").trim();
     const message = String(fd.get("message") || "").trim();
     const consent = fd.get("consent");
     if (!name || !email || !message) {
@@ -26,7 +28,16 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
     }
     const subject = encodeURIComponent(`[${site.name}] ${intent} — ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nIntent: ${intent}\n\n${message}`
+      [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Neighborhood / area: ${neighborhood || "(not provided)"}`,
+        `Dog breed / coat / size: ${dog || "(not provided)"}`,
+        `Intent: ${intent}`,
+        "",
+        message,
+      ].join("\n")
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setOk(true);
@@ -57,8 +68,29 @@ export function ContactForm({ intent = "general" }: { intent?: string }) {
         <input name="phone" type="tel" autoComplete="tel" />
       </label>
       <label>
+        Neighborhood / area
+        <input
+          name="neighborhood"
+          autoComplete="address-level2"
+          placeholder="e.g. South Congress, Cedar Park"
+        />
+      </label>
+      <label>
+        Dog breed / coat / size
+        <input name="dog" placeholder="e.g. Goldendoodle, medium, curly" />
+      </label>
+      <label>
         Message
-        <textarea name="message" rows={5} required />
+        <textarea
+          name="message"
+          rows={5}
+          required
+          placeholder={
+            intent === "booking"
+              ? "Preferred days, sensitivities, and anything else for the van route…"
+              : undefined
+          }
+        />
       </label>
       <label className="hp" aria-hidden="true">
         Company

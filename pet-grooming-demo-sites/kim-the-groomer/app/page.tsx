@@ -15,20 +15,27 @@ export default function HomePage() {
         <div className="hero-dock">
           <p className="hero-kicker">{site.kicker}</p>
           <h1 className="hero-brand">{site.name}</h1>
+          <p className="hero-owner">{site.owner} · Professional handler · Denver</p>
           <p className="hero-line">{site.heroLine}</p>
           <div className="hero-ctas">
-            <a className="btn btn-light" href={site.primaryCta.href}>{site.primaryCta.label}</a>
-            <Link className="btn btn-ghost" href="/pricing" style={{ color: "#fff", borderColor: "rgba(255,255,255,.45)" }}>
-              View pricing
+            <a className="btn btn-light" href={site.primaryCta.href}>
+              {site.primaryCta.label}
+            </a>
+            <Link
+              className="btn btn-ghost"
+              href="/about"
+              style={{ color: "#fff", borderColor: "rgba(255,255,255,.45)" }}
+            >
+              Meet Kimberly
             </Link>
           </div>
         </div>
       </section>
 
       <div className="wrap">
-        <div className="trust">
+        <div className="trust" role="list">
           {site.trust.map((t) => (
-            <div key={t.title}>
+            <div className="trust-item" role="listitem" key={t.title}>
               <strong>{t.title}</strong>
               <span>{t.sub}</span>
             </div>
@@ -37,58 +44,114 @@ export default function HomePage() {
       </div>
 
       <section className="wrap">
+        <div className="story">
+          <Reveal>
+            <div>
+              <div className="story-visual">
+                <Image
+                  src={img.portrait}
+                  alt={`${site.owner} — Kim the Groomer portrait from Zen Den profile`}
+                  fill
+                  sizes="(max-width: 859px) 100vw, 40vw"
+                  priority
+                />
+              </div>
+              <p className="story-caption">
+                <strong>{site.owner}</strong> · portrait from her Zen Den profile
+              </p>
+            </div>
+          </Reveal>
+          <Reveal>
+            <p className="section-kicker">About</p>
+            <h2 className="section-title">Handler background. Family salon craft.</h2>
+            <p className="section-lead">{site.aboutLead}</p>
+            <p style={{ color: "var(--muted)", marginBottom: "1.25rem", maxWidth: "48ch" }}>
+              {site.aboutBody}
+            </p>
+            <Link className="btn btn-primary" href="/about">
+              Full story
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="wrap">
         <Reveal>
           <p className="section-kicker">Services</p>
           <h2 className="section-title">{site.homeServicesTitle}</h2>
           <p className="section-lead">{site.homeServicesLead}</p>
         </Reveal>
-        <div className="grid-3">
-          {site.services.slice(0, 3).map((s) => (
+        <div className="service-list">
+          {site.services.map((s) => (
             <Reveal key={s.title}>
-              <article className="card">
-                <h3>{s.title}</h3>
-                {s.price ? <div className="price">{s.price}</div> : null}
-                <p>{s.blurb}</p>
+              <article className="service-row">
+                <div>
+                  <div className="service-row-top">
+                    <h3>{s.title}</h3>
+                    {s.price ? <div className="price">{s.price}</div> : null}
+                  </div>
+                  <p>{s.blurb}</p>
+                </div>
+                {s.includes?.length ? (
+                  <ul>
+                    {s.includes.map((i) => (
+                      <li key={i}>{i}</li>
+                    ))}
+                  </ul>
+                ) : null}
               </article>
             </Reveal>
           ))}
         </div>
-        <p style={{ marginTop: "1.25rem" }}>
-          <Link className="btn btn-primary" href="/services">All services</Link>
+        <p style={{ marginTop: "1.35rem" }}>
+          <Link className="btn btn-ghost" href="/services">
+            All services
+          </Link>
         </p>
       </section>
 
       <section className="wrap">
         <Reveal>
           <p className="section-kicker">Gallery</p>
-          <h2 className="section-title">Recent finishes</h2>
-          <p className="section-lead">Stock grooming photography for layout — swap in your real gallery before launch.</p>
+          <h2 className="section-title">Presentation finishes</h2>
+          <p className="section-lead">
+            Stock photography for layout — swap in Kim’s real client gallery before launch.
+          </p>
         </Reveal>
         <div className="gallery">
           {[img.g1, img.g2, img.g3, img.g4].map((src, i) => (
             <div className="gallery-item" key={src}>
-              <Image src={src} alt={`Grooming portfolio placeholder ${i + 1}`} fill sizes="25vw" />
+              <Image
+                src={src}
+                alt={`Grooming portfolio placeholder ${i + 1}`}
+                fill
+                sizes="(max-width: 859px) 50vw, 33vw"
+              />
             </div>
           ))}
         </div>
         <p style={{ marginTop: "1.25rem" }}>
-          <Link className="btn btn-ghost" href="/gallery">Open portfolio</Link>
+          <Link className="btn btn-ghost" href="/gallery">
+            Open portfolio
+          </Link>
         </p>
       </section>
 
       <section className="wrap">
         <Reveal>
-          <p className="section-kicker">Happy clients</p>
-          <h2 className="section-title">What pet parents say</h2>
+          <p className="section-kicker">From the table</p>
+          <h2 className="section-title">What pet parents notice</h2>
         </Reveal>
-        <div className="grid-3">
+        <div className="quote-rail">
           {site.reviews.map((r) => (
             <Reveal key={r.who}>
-              <article className="card">
-                <p style={{ color: "var(--accent)", letterSpacing: "0.12em" }}>★★★★★</p>
-                <p style={{ margin: "0.75rem 0", color: "var(--ink)" }}>“{r.quote}”</p>
-                <p><strong style={{ color: "var(--brand)" }}>{r.who}</strong></p>
-              </article>
+              <blockquote>
+                “{r.quote}”
+                <cite>
+                  {r.who}
+                  {r.meta ? ` · ${r.meta}` : ""}
+                </cite>
+              </blockquote>
             </Reveal>
           ))}
         </div>
@@ -96,13 +159,28 @@ export default function HomePage() {
 
       <section className="wrap">
         <Reveal>
-          <div className="card" style={{ display: "grid", gap: "1rem" }}>
+          <div className="cta-band">
             <p className="section-kicker">Book</p>
-            <h2 className="section-title" style={{ marginBottom: 0 }}>{site.ctaBandTitle}</h2>
-            <p className="section-lead" style={{ marginBottom: 0 }}>{site.ctaBandLead}</p>
+            <h2 className="section-title">{site.ctaBandTitle}</h2>
+            <p className="section-lead">{site.ctaBandLead}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-              <a className="btn btn-primary" href={site.primaryCta.href}>{site.primaryCta.label}</a>
-              <Link className="btn btn-ghost" href="/faq">Read FAQ</Link>
+              <a className="btn btn-light" href={site.primaryCta.href}>
+                {site.primaryCta.label}
+              </a>
+              <Link
+                className="btn btn-ghost"
+                href="/book"
+                style={{ color: "#fff", borderColor: "rgba(255,255,255,.4)" }}
+              >
+                Request a visit
+              </Link>
+              <Link
+                className="btn btn-ghost"
+                href="/faq"
+                style={{ color: "#fff", borderColor: "rgba(255,255,255,.4)" }}
+              >
+                FAQ
+              </Link>
             </div>
           </div>
         </Reveal>
