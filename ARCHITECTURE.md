@@ -4,7 +4,7 @@
 **Authority:** Subordinate to `PROJECT_REQUIREMENTS.md`; aligned with `FEASIBILITY_REPORT.md`  
 **Date:** 2026-10-23  
 **Budget:** USD $0 infrastructure  
-**Build status:** Design only — no full implementation yet  
+**Build status:** Phase 1 implemented (CSV import/clean/classify + SQLite + mock sender). Research/drafting/dashboard/Gmail not built yet.  
 
 ---
 

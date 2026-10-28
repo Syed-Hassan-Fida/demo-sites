@@ -1,0 +1,10 @@
+# Phase 1 — keep dependencies minimal and free
+python-dotenv>=1.0.1
+dnspython>=2.6.1
+pytest>=8.3.0
+httpx>=0.27.0
+beautifulsoup4>=4.12.0
+playwright>=1.40.0
+
+# Declared early for later phases
+# streamlit>=1.36.0

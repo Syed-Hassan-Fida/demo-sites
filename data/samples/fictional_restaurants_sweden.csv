@@ -1,0 +1,7 @@
+business_name,category,email,website,location,phone,description,source,retrieved_date
+Fictional Fika House AB,Cafe,anna@fictional-fika-house.example,https://fictional-fika-house.example,Stockholm Sweden,+46 8 000 0001,Demo cafe for pipeline tests only,sample,2026-10-23
+Northern Broth Kitchen,Restaurant,lina@northern-broth.example,https://northern-broth.example,Gothenburg Sweden,+46 31 000 0002,Demo restaurant with booking page,sample,2026-10-23
+Duplicate Fika House AB,Cafe,anna@fictional-fika-house.example,https://fictional-fika-house.example,Stockholm Sweden,+46 8 000 0001,Duplicate email row for dedupe test,sample,2026-10-23
+Broken Email Bistro,Restaurant,not-an-email,https://broken-email-bistro.example,Malmo Sweden,,Invalid email syntax test row,sample,2026-10-23
+No Contact Krog,Restaurant,,https://no-contact-krog.example,Uppsala Sweden,,Missing email test row,sample,2026-10-23
+Role Inbox Grill,Restaurant,info@role-inbox-grill.example,https://role-inbox-grill.example,Stockholm Sweden,,Role-based inbox demo,sample,2026-10-23

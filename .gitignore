@@ -1,0 +1,39 @@
+# Secrets and local env
+.env
+*.pem
+credentials.json
+token*.json
+client_secret*.json
+
+# Local runtime data
+storage/*.db
+storage/*.db-*
+logs/*.log
+logs/*.jsonl
+data/incoming/*
+!data/incoming/.gitkeep
+data/exports/*
+!data/exports/.gitkeep
+data/originals/*
+!data/originals/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+.env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
